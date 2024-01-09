@@ -23,9 +23,9 @@ import {
 } from '@mui/material';
 import { Phone, Email, MapMarker, Linkedin, Twitter } from 'mdi-material-ui';
 import toast from 'react-hot-toast';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
-import validateContact, { ContactData } from '../../utils/validation/contact/add';
+import validateContactUs, { ContactData } from '@/utils/validation/contact/contactUs';
 import { LIGHT_GREY, OFF_WHITE } from '../theme';
 
 const useStyles = makeStyles()(theme => ({
@@ -124,7 +124,7 @@ const ContactUs = () => {
             subject,
             message
         };
-        const { errors, isValid } = validateContact(data);
+        const { errors, isValid } = validateContactUs(data);
 
         if (!isValid) {
             toast.error('Invalid Information');

@@ -1,9 +1,9 @@
+import Home from './(home)';
+
 const HomePage: React.FC<{}> = async () => {
 
 	return (
-		<div>
-			<h1>Home Page</h1>
-		</div>
+		<Home />
 	);
 }
 

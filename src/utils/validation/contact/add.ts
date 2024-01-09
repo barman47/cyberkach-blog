@@ -3,44 +3,33 @@ import Validator from 'validator';
 import { isEmpty } from '@/utils/isEmpty';
 import { ErrorObject } from '@/utils/constants';
 
-export type ContactData = {
+export type AddContactData = {
     name: string;
     email: string;
-    subject: string;
-    message: string;
 }
 
-const validateContactUs = (data: ContactData): ErrorObject<ContactData> => {
-    const errors = {} as ContactData;
+const validateAddContact = (data: AddContactData): ErrorObject<AddContactData> => {
+    const errors = {} as AddContactData;
 
-    data.name = !isEmpty(data.name) ?  data.name : '';
     data.email = !isEmpty(data.email) ?  data.email : '';
-    data.subject = !isEmpty(data.subject) ?  data.subject : '';
-    data.message = !isEmpty(data.message) ?  data.message : '';
+    data.name = !isEmpty(data.name) ?  data.name : '';
+    
+    if (!Validator.isEmail(data.email)) {
+        errors.email = 'Invalid email Address!';
+    }
+    if (Validator.isEmpty(data.email)) {
+        errors.email = 'Your email address is required!';
+    }
 
     if (Validator.isEmpty(data.name)) {
-        errors.name = 'Your name is required';
+        errors.name = 'Your name is required!';
     }
-
-    if (Validator.isEmpty(data.email)) {
-        errors.email = 'Email Address is required!';
-    }
-    if (!Validator.isEmail(data.email)) {
-        errors.email = 'Invalid Email Address!';
-    }
-
-    if (Validator.isEmpty(data.subject)) {
-        errors.subject = 'Message subject is required!';
-    }
-
-    if (Validator.isEmpty(data.message)) {
-        errors.message = 'Your message is required!';
-    }
+    
    
     return {
         errors,
         isValid: isEmpty(errors)
-    } as ErrorObject<ContactData>;
+    } as ErrorObject<AddContactData>;
 };
 
-export default validateContactUs;
+export default validateAddContact;
