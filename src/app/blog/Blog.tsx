@@ -306,7 +306,7 @@ const Blog: React.FC<Props> = ({ pagination, posts }) => {
                 :
                 <>
                     {posts.length &&
-                        <Link className={classes.featuredPost} href={`blog/${posts[0].slug}`}>
+                        <Link className={classes.featuredPost} href={`/blog/${posts[0].slug}`}>
                             <Image 
                                 src={posts[0].imageUrl} 
                                 alt={posts[0].slug}
@@ -331,7 +331,7 @@ const Blog: React.FC<Props> = ({ pagination, posts }) => {
                             return (
                                 <Link 
                                     key={post._id} 
-                                    href={`blog/${post.slug}`} 
+                                    href={`/blog/${post.slug}`} 
                                     className={classes.sidePost} 
                                 >
                                     <Stack direction="row" spacing={2}>

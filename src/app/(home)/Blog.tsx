@@ -228,11 +228,11 @@ const Post: React.FC<PostProps> = ({ post }) => {
             />
             <CardContent>
                 <Tooltip title={title} placement="top-start" TransitionComponent={Zoom} TransitionProps={{ timeout: 300 }} arrow>
-                    <Link href="" style={{ textDecoration: 'none' }}>
+                    <Link href={`/blog/${post.slug}`} style={{ textDecoration: 'none' }}>
                         <Typography variant="h6" className={classes.postTitle}>{post.title}</Typography>
                     </Link>
                 </Tooltip>
-                <Button className={classes.button} variant="outlined" component={Link} href="" color="primary">View Post</Button>
+                <Button className={classes.button} variant="outlined" component={Link} href={`/blog/${post.slug}`} color="primary">View Post</Button>
             </CardContent>
             <CardActions disableSpacing className={classes.footer}>
                 <Typography variant="subtitle2" className={classes.date}>
