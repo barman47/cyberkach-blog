@@ -6,8 +6,9 @@ import ThemeRegistry from './ThemeRegistry';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PrivacyPopup from './(home)/PrivacyPopup';
+import { Providers } from '@/redux/Provider';
 
-const inter = Quicksand({ subsets: ['latin'] })
+const quicksand = Quicksand({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   	title: 'Cyber Security at your finger tips | CyberKach.com',
@@ -29,14 +30,16 @@ export default function RootLayout({
 				<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 			</head>
-			<body className={inter.className}>
-				<ThemeRegistry options={{ key: 'mui' }}>
-					<Header />
-					{children}
-					<Footer />
-					<PrivacyPopup />
-					<Toaster />
-				</ThemeRegistry>
+			<body className={quicksand.className}>
+				<Providers>
+					<ThemeRegistry options={{ key: 'mui' }}>
+						<Header />
+						{children}
+						<Footer />
+						<PrivacyPopup />
+						<Toaster />
+					</ThemeRegistry>
+				</Providers>
 			</body>
 		</html>
 	);

@@ -25,12 +25,10 @@ import {
 import { ArrowRight, ShareVariant as ShareIcon, CalendarMonthOutline as CalendarIcon, ArrowLeft } from 'mdi-material-ui';
 import moment from 'moment';
 import { LinkedinShareButton, TwitterShareButton } from 'react-share';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { Link as LinkIcon, Linkedin, Twitter } from 'mdi-material-ui';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-// @ts-ignore
-import TextClamp from 'react-string-clamp';
 
 import { Post } from '@/interfaces';
 import { LIGHT_GREY, OFF_BLACK, OFF_WHITE } from '../theme';
@@ -75,6 +73,10 @@ const useStyles = makeStyles()(theme => ({
 
     postTitle: {
         color: OFF_BLACK,
+        display: '-webkit-box',
+        overflow: 'hidden',
+        WebkitBoxOrient: 'vertical',
+        WebkitLineClamp: 2,
         fontWeight: 500,
         textDecoration: 'none'
     },
@@ -226,11 +228,9 @@ const Post: React.FC<PostProps> = ({ post }) => {
             />
             <CardContent>
                 <Tooltip title={title} placement="top-start" TransitionComponent={Zoom} TransitionProps={{ timeout: 300 }} arrow>
-                    <Typography variant="h6">
-                        <Link href="" className={classes.postTitle}>
-                            <TextClamp text={title} lines={2} />
-                        </Link>
-                    </Typography>
+                    <Link href="" style={{ textDecoration: 'none' }}>
+                        <Typography variant="h6" className={classes.postTitle}>{post.title}</Typography>
+                    </Link>
                 </Tooltip>
                 <Button className={classes.button} variant="outlined" component={Link} href="" color="primary">View Post</Button>
             </CardContent>
