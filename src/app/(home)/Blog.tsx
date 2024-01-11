@@ -22,7 +22,7 @@ import {
     ListItemText
 } from '@mui/material';
 
-import { ArrowRight, ShareVariant as ShareIcon, CalendarMonthOutline as CalendarIcon, ArrowLeft } from 'mdi-material-ui';
+import { ArrowRight, ShareVariant as ShareIcon, CalendarMonthOutline as CalendarIcon } from 'mdi-material-ui';
 import moment from 'moment';
 import { LinkedinShareButton, TwitterShareButton } from 'react-share';
 import toast from 'react-hot-toast';
