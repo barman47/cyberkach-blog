@@ -218,6 +218,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
     const clickToCopy = async () => {
         await navigator.clipboard.writeText(URL);
         toast.success('Link copied!');
+        handleClose();
     };
 
     return (

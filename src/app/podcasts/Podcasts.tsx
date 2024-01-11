@@ -4,6 +4,7 @@ import * as React from 'react';
 import Image from 'next/image';
 import { 
     Box,
+    Divider,
     Stack,
     Typography,
     useMediaQuery,
@@ -133,9 +134,12 @@ const Podcasts: React.FC<Props> = ({ podcasts }) => {
                 </Stack>
                 <Stack direction="column" component="div" spacing={2} mt={matches ? 1 : 3}>
                     {podcasts ? podcasts.map(podcast => (
-                        <PodcastItem key={podcast._id} podcast={podcast} />
+                        <React.Fragment key={podcast._id}>
+                            <PodcastItem podcast={podcast} />
+                            <Divider />
+                        </React.Fragment>
                     ))
-                        :
+                    :
                     <Typography variant="h5">No Podcasts at this time</Typography>
                     }
                 </Stack>

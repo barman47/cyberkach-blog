@@ -107,11 +107,24 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
 
     // set the initial duration of the audio
     React.useEffect(() => {
+        const handleLoadedMetadata = () => {
+            if (audioRef.current && audioRef.current.readyState >= 2) {
+                setDuration(audioRef.current.duration);
+                setTimeLeft(audioRef.current.duration);
+            }
+        };
+      
         if (audioRef.current) {
-            setDuration(audioRef.current.duration);
-            setTimeLeft(audioRef.current.duration);
+            audioRef.current.addEventListener('loadedmetadata', handleLoadedMetadata);
         }
-    }, [audioRef]);
+      
+        return () => {
+            if (audioRef.current) {
+                // eslint-disable-next-line react-hooks/exhaustive-deps
+                audioRef.current.removeEventListener('loadedmetadata', handleLoadedMetadata);
+            }
+        };
+    }, [audioRef.current?.duration]);
 
     const pause = (): void => {
         if (audioRef.current) {
@@ -154,7 +167,7 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
                 <Stack className={classes.root} direction="row" alignItems="center" justifyContent="space-between" component="section">
                     <Stack direction="row" alignItems="center" spacing={3}>
                         <Image 
-                            src="/assets/img/icon.png"
+                            src="/assets/img/podcast.png"
                             width={100}
                             height={100}
                             alt="CyberKach Icon"
@@ -193,10 +206,12 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
                                             valueLabelFormat={formatLabel}
                                             className={classes.slider}
                                         />
-                                        <Typography variant="body1">{formatDuration(timeLeft)} left</Typography>
+                                        <Typography variant="body1" className={classes.label}>{formatDuration(timeLeft)} left</Typography>
                                     </>
                                     : 
-                                    <Typography variant="body1">{formatDuration(duration)}</Typography>
+                                    <>
+                                        {duration && <Typography variant="body1" className={classes.label}>{formatDuration(duration)}</Typography>}
+                                    </>
                                 }
                             </Stack>
                         </Stack>
@@ -252,7 +267,7 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
                             </>
                             : 
                             <>
-                                <Typography variant="body1" className={classes.label}>{formatDuration(duration)}</Typography>
+                                {duration && <Typography variant="body1" className={classes.label}>{formatDuration(duration)}</Typography>}
                                 <IconButton size="small">
                                     <Share />
                                 </IconButton>

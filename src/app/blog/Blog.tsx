@@ -370,7 +370,7 @@ export const Post: React.FC<PostProps> = ({ post }) => {
     };
 
     return (
-        <Card variant="outlined" raised>
+        <Card variant="outlined">
             <CardActionArea
                 onClick={(e) => handleSetPost(e, `blog/${slug}`)}
             >

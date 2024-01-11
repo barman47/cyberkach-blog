@@ -96,7 +96,6 @@ export const posts = createSlice({
             state.isLoading = true;
         })
         .addCase(getMorePosts.fulfilled, (state, action) => {
-            console.log(action.payload);
             state.isLoading = false;
             state.posts = [...state.posts, ...action.payload.data];
             state.pagination = action.payload.pagination || { };

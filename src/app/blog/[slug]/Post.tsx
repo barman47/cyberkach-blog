@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import NextLink from 'next/link';
-// import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { makeStyles } from 'tss-react/mui';
 import _ from 'lodash';
@@ -107,41 +106,14 @@ interface Props {
     posts: PostData[];
 }
 
-// https://cyberkach.com/2020/02/05/phishing/
-
 const Post: React.FC<Props> = ({ post, posts }) => {
     const { classes } = useStyles();
-    // const pathname = usePathname();
 
     const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(null);
     const [url, setUrl] = React.useState('');
 
     React.useEffect(() => {
         setUrl(`${window.location.origin}/blog/${post.slug}`);
-
-        // eslint-disable-next-line
-    }, []);
-
-    React.useEffect(() => {
-        
-        // if (_.isEmpty(post)) {
-        //     const params = pathname.split('/');
-        //     let slug;
-        //     if (params.length > 3) {
-        //         // /2021/5/20 format here: old post
-        //         const year = params[1].toString();
-        //         const month = params[2].toString();
-        //         const day = params[3].toString();
-        //         slug = params[4].toString();
-        //         getOldPostBySlug({ year, month, day, slug });
-        //     } else {
-        //         // /blog/slug format here: New Post
-        //         slug = pathname.split('/')[2];
-        //         getPostBySlug(slug);
-        //     }
-        // }
-
-
         // eslint-disable-next-line
     }, []);
 

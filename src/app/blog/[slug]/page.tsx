@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             description,
             creator: 'CyberKach',
             images: {
-                url: post.imageUrl!,
+                url: post.imageUrl,
                 alt: post.slug,
             }
         }
