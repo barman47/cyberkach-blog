@@ -49,8 +49,6 @@ const useStyles = makeStyles()(theme => ({
     },
 
     logo: {
-        // width: theme.spacing(25),
-        // height: theme.spacing(10),
         width: 'auto',
         height: 'auto',
         objectFit: 'cover'
@@ -96,19 +94,12 @@ const useStyles = makeStyles()(theme => ({
     }
 }));
 
-interface Props {
-
-}
-
 const Header = () => {
     const {classes} = useStyles();
     const pathname = usePathname();
     
     const [drawerOpen, setDrawerOpen] = React.useState(false);
     const [isBlog, setIsBlog] = React.useState(false);
-    // const isTablet = useMediaQuery(theme.breakpoints.down('lg'), {
-    //     defaultMatches: true
-    // })
 
     React.useEffect(() => {
         if (pathname.includes('/blog')) {
@@ -149,7 +140,7 @@ const Header = () => {
                                     <Link underline="hover" href="/blog" className={classes.link} component={NextLink} variant="body1">Blog</Link>
                                 </Stack>
                                 <Stack>
-                                    <Link underline="hover" href="/listen/podcasts" className={classes.link} component={NextLink} variant="body1">Podcasts</Link>
+                                    <Link underline="hover" href="/podcasts" className={classes.link} component={NextLink} variant="body1">Podcasts</Link>
                                 </Stack>
                             </Stack>
                         </Grid>

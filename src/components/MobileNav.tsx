@@ -6,8 +6,7 @@ import {
     ListItemText, 
     ListItemIcon, 
     SwipeableDrawer,
-    Typography,
-    Stack
+    Typography
 } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import { Home, Microphone, NewspaperVariant, Phone } from 'mdi-material-ui';
@@ -80,7 +79,7 @@ const MobileNav:React.FC<Props> = ({ toggleDrawer, drawerOpen }) => {
                         </ListItemIcon>
                         <ListItemText primary="Blog" />
                     </ListItemLink>
-                    <ListItemLink href="/listen/podcasts" onClick={toggleDrawer}>
+                    <ListItemLink href="/podcasts" onClick={toggleDrawer}>
                         <ListItemIcon>
                             <Microphone />
                         </ListItemIcon>

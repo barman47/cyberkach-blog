@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import NextLink from 'next/link';
-import { usePathname } from 'next/navigation';
+// import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { makeStyles } from 'tss-react/mui';
 import _ from 'lodash';
@@ -28,11 +28,9 @@ import {
     Linkedin, 
     Twitter, 
     CalendarMonthOutline as CalendarIcon, 
-    ShareVariant as ShareIcon, 
-    HeartOutline
+    ShareVariant as ShareIcon,
 } from 'mdi-material-ui';
 import { Post as PostData } from '@/interfaces';
-import { selectPosts } from '@/redux/features/postsSlice';
 import toast from 'react-hot-toast';
 
 const useStyles = makeStyles()(theme => ({
@@ -109,9 +107,11 @@ interface Props {
     posts: PostData[];
 }
 
+// https://cyberkach.com/2020/02/05/phishing/
+
 const Post: React.FC<Props> = ({ post, posts }) => {
     const { classes } = useStyles();
-    const pathname = usePathname();
+    // const pathname = usePathname();
 
     const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(null);
 
