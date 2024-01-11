@@ -114,9 +114,13 @@ const Post: React.FC<Props> = ({ post, posts }) => {
     // const pathname = usePathname();
 
     const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(null);
+    const [url, setUrl] = React.useState('');
 
-    
-    const URL = `${window.location.origin}/blog/${post.slug}`;
+    React.useEffect(() => {
+        setUrl(`${window.location.origin}/blog/${post.slug}`);
+
+        // eslint-disable-next-line
+    }, []);
 
     React.useEffect(() => {
         
@@ -150,7 +154,7 @@ const Post: React.FC<Props> = ({ post, posts }) => {
     };
 
     const clickToCopy = async () => {
-        await navigator.clipboard.writeText(URL);
+        await navigator.clipboard.writeText(url);
         toast.success('Link copied!');
         setAnchorElement(null);
     };
@@ -205,7 +209,7 @@ const Post: React.FC<Props> = ({ post, posts }) => {
                             </MenuItem>
                             <MenuItem onClick={() => setAnchorElement(null)}>
                                 <LinkedinShareButton
-                                    url={URL}
+                                    url={url}
                                     title={post.title}
                                     summary="Page Summary Here"
                                     source="CyberKach.com"
@@ -221,7 +225,7 @@ const Post: React.FC<Props> = ({ post, posts }) => {
                             </MenuItem>
                             <MenuItem onClick={() => setAnchorElement(null)}>
                                 <TwitterShareButton
-                                    url={URL}
+                                    url={url}
                                     title={post.title}
                                     via="Via content here"
                                     hashtags={['hashtag1', 'hashtag2']}
