@@ -1,7 +1,7 @@
 'use client';
 
 import { makeStyles } from 'tss-react/mui';
-import { Grid, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 
 import { OFF_WHITE } from '../theme';
 

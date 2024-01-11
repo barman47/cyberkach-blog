@@ -26,7 +26,7 @@ import Posts from './Posts';
 import { Post as PostData } from '@/interfaces';
 import { AppDispatch } from '@/redux/store';
 import { LIGHT_GREY, OFF_WHITE } from '../theme';
-import { Pagination, getMorePosts, selectIsPostLoading, selectPagination, setPagination, setPosts } from '@/redux/features/postsSlice';
+import { Pagination, selectIsPostLoading, selectPagination, setPagination, setPosts } from '@/redux/features/postsSlice';
 
 const useStyles = makeStyles()(theme => ({
     root: {
@@ -275,7 +275,6 @@ interface Props {
 
 const Blog: React.FC<Props> = ({ pagination, posts }) => {
     const { classes } = useStyles();
-    const router = useRouter();
     const dispatch: AppDispatch = useDispatch();
     
     
@@ -287,15 +286,6 @@ const Blog: React.FC<Props> = ({ pagination, posts }) => {
       dispatch(setPagination(pagination));
       // eslint-disable-next-line
     }, []);
-
-    const setPost = (e: React.MouseEvent<HTMLAnchorElement | HTMLDivElement, MouseEvent>, post: PostData, url: string) => {
-        e.preventDefault();
-        // dispatch({
-        //     type: SET_POST,
-        //     payload: post
-        // });
-        // history.push(url);
-    };
 
     return (
         <Box component="main" className={classes.root}>
@@ -370,17 +360,12 @@ interface PostProps {
 export const Post: React.FC<PostProps> = ({ post }) => {
     const { classes } = useStyles();
     const router = useRouter();
-    const dispatch: AppDispatch = useDispatch();
 
     const { title, slug, body, imageUrl, createdAt } = post;
 
 
     const handleSetPost = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, url: string) => {
         e.preventDefault();
-        // dispatch({
-        //     type: SET_POST,
-        //     payload: {}
-        // });
         router.push(url);
     };
 

@@ -14,7 +14,6 @@ import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 
 import validateAddContact, { AddContactData } from '@/utils/validation/contact/add';
-import img from '../../assets/img/newsletter.svg';
 import { OFF_WHITE } from '../theme';
 
 const useStyles = makeStyles()(theme => ({

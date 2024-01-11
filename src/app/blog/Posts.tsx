@@ -3,12 +3,12 @@
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, useTheme, useMediaQuery, Typography } from '@mui/material';
+import { Box, useTheme, useMediaQuery } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 
 import { Post } from './Blog';
 import { Post as PostData } from '@/interfaces';
-import { Pagination, getMorePosts, selectIsPostLoading, selectPagination, selectPosts } from '@/redux/features/postsSlice';
+import { Pagination, getMorePosts, selectPagination, selectPosts } from '@/redux/features/postsSlice';
 import { AppDispatch } from '@/redux/store';
 
 const useStyles = makeStyles()(theme => ({
