@@ -6,6 +6,7 @@ import {
     IconButton,
     Slider,
     Stack, 
+    Tooltip, 
     Typography,
     useMediaQuery,
     useTheme
@@ -143,7 +144,7 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
     const formatDuration = (value: number): string => {
         const minutes = Math.floor(value / 60);
         const seconds = parseInt((value - minutes * 60).toFixed(0));
-        return `${minutes} ${minutes > 1 ? 'mins' : 'min'} ${seconds < 10 ? `0${seconds}` : seconds} ${seconds > 1 ? 'secs' : 'sec'}`;
+        return `${minutes} ${minutes > 1 ? 'mins' : 'min'} ${seconds < 10 ? `0${seconds}` : seconds} ${seconds === 1 ? 'sec' : 'secs'}`;
     }
 
     const formatDurationForLabel = (value: number): { minutes: number; seconds: number; } => {
@@ -179,11 +180,15 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
                             <Stack direction="row" alignItems="center" spacing={2}>
                                 {isPlaying ?
                                     <IconButton onClick={pause}>
-                                        <Pause />
+                                        <Tooltip title="Pause" arrow placement="top">
+                                            <Pause />
+                                        </Tooltip>
                                     </IconButton>
                                     :
                                     <IconButton onClick={play}>
-                                        <Play />
+                                        <Tooltip title="Play" arrow placement="top">
+                                            <Play />
+                                        </Tooltip>
                                     </IconButton>
                                 }
                                 <Typography variant="body1">{moment(podcast.createdAt).format('MMM YYYY')}</Typography>
@@ -236,11 +241,15 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
                     <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={1}>
                         {isPlaying ?
                             <IconButton size="small" onClick={pause}>
-                                <Pause />
+                                <Tooltip title="Pause" arrow placement="top">
+                                    <Pause />
+                                </Tooltip>
                             </IconButton>
                             :
                             <IconButton size="small" onClick={play}>
-                                <Play />
+                                <Tooltip title="Play" arrow placement="top">
+                                    <Play />
+                                </Tooltip>
                             </IconButton>
                         }
                         <Typography variant="body1" className={classes.label}>{moment(podcast.createdAt).format('MMM YYYY')}</Typography>
