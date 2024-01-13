@@ -247,7 +247,7 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
                         />
                         <Typography variant="h6" className={classes.title}>{podcast.title}</Typography>
                     </Stack>
-                    <Typography variant="body1" className={classes.description}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, sed molestias rem eveniet exercitationem deserunt.</Typography>
+                    <Typography variant="body1" className={classes.description}>{podcast.description}</Typography>
                     <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={1}>
                         {isPlaying ?
                             <IconButton size="small" onClick={pause}>
