@@ -86,7 +86,7 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
         }
     }, [duration, position]);
 
-    // updare the slider while the audio plays
+    // updare the slider while the audio plays and Reset audio player when audio plays to the end
     React.useEffect(() => {
         const updateSlider = () => {
             if (audioRef.current) {
@@ -94,14 +94,24 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
             }
         };
 
+        const handleResetAudioPlayer = () => {
+            if (audioRef.current) {
+                pause();
+                audioRef.current.currentTime = 0;
+            }
+        }
+
         if (audioRef.current) {
             audioRef.current.addEventListener('timeupdate', updateSlider);
+            audioRef.current.addEventListener('ended', handleResetAudioPlayer);
         }
 
         return () => {
             if (audioRef.current) {
                 // eslint-disable-next-line react-hooks/exhaustive-deps
                 audioRef.current.removeEventListener('timeupdate', updateSlider);
+                // eslint-disable-next-line react-hooks/exhaustive-deps
+                audioRef.current.removeEventListener('ended', handleResetAudioPlayer);
             }
         };
     }, [audioRef]);
@@ -163,7 +173,7 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
 
     return (
         <>
-            <audio style={{ display: 'none' }} src="https://d3ctxlq1ktw2nl.cloudfront.net/staging/2023-11-29/361591126-44100-2-f311d9294936a.m4a" ref={audioRef}></audio>
+            <audio style={{ display: 'none' }} src={podcast.url} ref={audioRef}></audio>
             {!matches ? 
                 <Stack className={classes.root} direction="row" alignItems="center" justifyContent="space-between" component="section">
                     <Stack direction="row" alignItems="center" spacing={3}>
@@ -176,7 +186,7 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
                         />
                         <Stack direction="column">
                             <Typography variant="h6" className={classes.title}>{podcast.title}</Typography>
-                            <Typography variant="body1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, sed molestias rem eveniet exercitationem deserunt.</Typography>
+                            <Typography variant="body1">{podcast.description}</Typography>
                             <Stack direction="row" alignItems="center" spacing={2}>
                                 {isPlaying ?
                                     <IconButton onClick={pause}>
