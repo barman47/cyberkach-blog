@@ -51,15 +51,18 @@ const useStyles = makeStyles()(theme => ({
     logo: {
         width: 'auto',
         height: 'auto',
-        objectFit: 'cover'
+        objectFit: 'cover',
+        [theme.breakpoints.down('md')]: {
+            width: theme.spacing(10)
+        }
     },
 
     smallLogo: {
-        width: 'auto',
+        width: theme.spacing(8),
         height: 'auto',
         objectFit: 'cover',
-        [theme.breakpoints.down('sm')]: {
-            width: '35%'
+        [theme.breakpoints.down('md')]: {
+            width: theme.spacing(5)
         }
     },
 
@@ -102,7 +105,7 @@ const Header = () => {
     const [isBlog, setIsBlog] = React.useState(false);
 
     React.useEffect(() => {
-        if (pathname.includes('/blog')) {
+        if (pathname.includes('/blog') || pathname.includes('/podcasts')) {
             setIsBlog(true);
         } else {
             setIsBlog(false);

@@ -119,7 +119,7 @@ const Podcasts: React.FC<Props> = ({ podcasts }) => {
                         <Typography variant="h6" className={classes.subtitle}>Onyekachi Okereke | Cyberkach.com</Typography>
                     </Box>
                     <Image 
-                        src="/assets/img/logo-white.png"
+                        src="/assets/img/logo-grey.png"
                         width={200}
                         height={200}
                         alt="Cyberkach logo"

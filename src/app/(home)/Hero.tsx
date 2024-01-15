@@ -78,7 +78,7 @@ const useStyles = makeStyles()(theme => ({
 
     text: {
         position: 'absolute',
-        top: '50%',
+        top: '45%',
         left: 50,
         width: '50%',
         color: OFF_WHITE,
@@ -92,6 +92,7 @@ const useStyles = makeStyles()(theme => ({
 
         [theme.breakpoints.down('sm')]: {
             left: 20,
+            top: '33%',
             width: '90%',
             fontSize: theme.spacing(2),
         }
