@@ -235,7 +235,7 @@ const Post: React.FC<Props> = ({ post, posts }) => {
                         {posts.map((post: PostData, index: number) => {
                             if (index <= 4) {
                                 return (
-                                    <Link key={post._id} href={`blog/${post.slug}`} component={NextLink}>
+                                    <Link key={post._id} href={`/blog/${post.slug}`} component={NextLink}>
                                         <Typography variant="body1" style={{ marginBottom: '10px' }}>
                                                 {post.title}
                                         </Typography>
