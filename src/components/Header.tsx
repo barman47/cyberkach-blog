@@ -49,7 +49,7 @@ const useStyles = makeStyles()(theme => ({
     },
 
     logo: {
-        width: 'auto',
+        width: theme.spacing(20),
         height: 'auto',
         objectFit: 'cover',
         [theme.breakpoints.down('md')]: {
