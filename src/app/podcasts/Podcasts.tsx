@@ -116,7 +116,7 @@ const Podcasts: React.FC<Props> = ({ podcasts }) => {
                 <Stack direction="row" justifyContent="space-between" alignItems="center">
                     <Box component="div" className={classes.titleContainer}>
                         <Typography variant="h4" className={classes.title}>The CyberKach Podcast</Typography>
-                        <Typography variant="h6" className={classes.subtitle}>Onyekachi Okereke | Cyberkach.com</Typography>
+                        {/* <Typography variant="h6" className={classes.subtitle}>Onyekachi Okereke | Cyberkach.com</Typography> */}
                     </Box>
                     <Image 
                         src="/assets/img/logo-grey.png"

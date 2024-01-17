@@ -12,7 +12,7 @@ import {
     useTheme
 } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
-import { Pause, Play, Share } from 'mdi-material-ui';
+import { Pause, Play } from 'mdi-material-ui';
 import moment from 'moment';
 
 import { Podcast as PodcastData } from '@/interfaces';
@@ -231,9 +231,6 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
                             </Stack>
                         </Stack>
                     </Stack>
-                    <IconButton>
-                        <Share />
-                    </IconButton>
                 </Stack>
                 :
                 <Stack className={classes.root} direction="column" justifyContent="space-between" component="section">
@@ -287,9 +284,6 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
                             : 
                             <>
                                 {duration && <Typography variant="body1" className={classes.label}>{formatDuration(duration)}</Typography>}
-                                <IconButton size="small">
-                                    <Share />
-                                </IconButton>
                             </>
                         }
                     </Stack>
