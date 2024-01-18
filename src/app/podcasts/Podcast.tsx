@@ -37,6 +37,10 @@ const useStyles = makeStyles()((theme) => ({
         }
     },
 
+    rightSide: {
+        width: '100%'
+    },
+
     title: {
         fontWeight: 600,
         margin: '0 !important',
@@ -174,66 +178,8 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
     return (
         <>
             <audio style={{ display: 'none' }} src={podcast.url} ref={audioRef}></audio>
-            {!matches ? 
-                <Stack className={classes.root} direction="row" alignItems="center" justifyContent="space-between" component="section">
-                    <Stack direction="row" alignItems="center" spacing={3}>
-                        <Image 
-                            src="/assets/img/podcast.png"
-                            width={100}
-                            height={100}
-                            alt="CyberKach Icon"
-                            className={classes.image}
-                        />
-                        <Stack direction="column">
-                            <Typography variant="h6" className={classes.title}>{podcast.title}</Typography>
-                            <Typography variant="body1">{podcast.description}</Typography>
-                            <Stack direction="row" alignItems="center" spacing={2}>
-                                {isPlaying ?
-                                    <IconButton onClick={pause}>
-                                        <Tooltip title="Pause" arrow placement="top">
-                                            <Pause />
-                                        </Tooltip>
-                                    </IconButton>
-                                    :
-                                    <IconButton onClick={play}>
-                                        <Tooltip title="Play" arrow placement="top">
-                                            <Play />
-                                        </Tooltip>
-                                    </IconButton>
-                                }
-                                <Typography variant="body1">{moment(podcast.createdAt).format('MMM YYYY')}</Typography>
-                                {isPlaying ?
-                                    <>
-                                        <Slider
-                                            size="small"
-                                            defaultValue={0}
-                                            min={0}
-                                            max={duration}
-                                            value={position}
-                                            aria-label="Small"
-                                            valueLabelDisplay="auto"
-                                            onChange={(_, value) => {
-                                                setPosition(value as number);
-                                                if (audioRef.current) {
-                                                    audioRef.current.currentTime = value as number;
-                                                }
-                                            }}
-                                            valueLabelFormat={formatLabel}
-                                            className={classes.slider}
-                                        />
-                                        <Typography variant="body1" className={classes.label}>{formatDuration(timeLeft)} left</Typography>
-                                    </>
-                                    : 
-                                    <>
-                                        {duration && <Typography variant="body1" className={classes.label}>{formatDuration(duration)}</Typography>}
-                                    </>
-                                }
-                            </Stack>
-                        </Stack>
-                    </Stack>
-                </Stack>
-                :
-                <Stack className={classes.root} direction="column" justifyContent="space-between" component="section">
+            {matches ? 
+                <Stack className={classes.root} direction="column" spacing={1} justifyContent="space-between" component="section">
                     <Stack direction="row" alignItems="center" spacing={1}>
                         <Image 
                             src="/assets/img/icon.png"
@@ -245,7 +191,7 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
                         <Typography variant="h6" className={classes.title}>{podcast.title}</Typography>
                     </Stack>
                     <Typography variant="body1" className={classes.description}>{podcast.description}</Typography>
-                    <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1}>
                         {isPlaying ?
                             <IconButton size="small" onClick={pause}>
                                 <Tooltip title="Pause" arrow placement="top">
@@ -286,6 +232,62 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
                                 {duration && <Typography variant="body1" className={classes.label}>{formatDuration(duration)}</Typography>}
                             </>
                         }
+                    </Stack>
+                </Stack>
+                :
+                <Stack className={classes.root} direction="row" alignItems="center" spacing={3} component="section">
+                    <Image 
+                        src="/assets/img/podcast.png"
+                        width={100}
+                        height={100}
+                        alt="CyberKach Icon"
+                        className={classes.image}
+                    />
+                    <Stack direction="column" className={classes.rightSide}>
+                        <Typography variant="h6" className={classes.title}>{podcast.title}</Typography>
+                        <Typography variant="body1">{podcast.description}</Typography>
+                        <Stack direction="row" alignItems="center" spacing={2}>
+                            {isPlaying ?
+                                <IconButton onClick={pause}>
+                                    <Tooltip title="Pause" arrow placement="top">
+                                        <Pause />
+                                    </Tooltip>
+                                </IconButton>
+                                :
+                                <IconButton onClick={play}>
+                                    <Tooltip title="Play" arrow placement="top">
+                                        <Play />
+                                    </Tooltip>
+                                </IconButton>
+                            }
+                            <Typography variant="body1">{moment(podcast.createdAt).format('MMM YYYY')}</Typography>
+                            {isPlaying ?
+                                <>
+                                    <Slider
+                                        size="small"
+                                        defaultValue={0}
+                                        min={0}
+                                        max={duration}
+                                        value={position}
+                                        aria-label="Small"
+                                        valueLabelDisplay="auto"
+                                        onChange={(_, value) => {
+                                            setPosition(value as number);
+                                            if (audioRef.current) {
+                                                audioRef.current.currentTime = value as number;
+                                            }
+                                        }}
+                                        valueLabelFormat={formatLabel}
+                                        className={classes.slider}
+                                    />
+                                    <Typography variant="body1" className={classes.label}>{formatDuration(timeLeft)} left</Typography>
+                                </>
+                                : 
+                                <>
+                                    {duration && <Typography variant="body1" className={classes.label}>{formatDuration(duration)}</Typography>}
+                                </>
+                            }
+                        </Stack>
                     </Stack>
                 </Stack>
             }
