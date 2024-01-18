@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
    
     return {
         title: `${post.title} | CyberKach.com`,
-        description: post.title.slice(0, 161),
+        description: post.body.slice(0, 161),
         openGraph: {
             images: [post.imageUrl],
         },

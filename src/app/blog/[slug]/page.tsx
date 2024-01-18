@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const post: PostData = data.data;
 
     const  title = post.title;
-    const  description = post.title.slice(0, 161);
+    const  description = post.body.slice(0, 161);
    
     return {
         title: `${post.title} | CyberKach.com`,
