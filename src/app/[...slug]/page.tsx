@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 
 import Post from '@/app/blog/[slug]/Post';
 import { Post as PostData } from '@/interfaces';
+import { removeHtmlTags } from '@/utils/removeHtmlTags';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = params;
@@ -16,12 +17,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const data = await res.json();
     const post: PostData = data.data;
 
-    const  title = post.title;
-    const  description = post.title.slice(0, 161);
+    const title = post.title;
+    const description = removeHtmlTags(post.body.slice(0, 161));
    
     return {
         title: `${post.title} | CyberKach.com`,
-        description: post.body.slice(0, 161),
+        description,
         openGraph: {
             images: [post.imageUrl],
         },
