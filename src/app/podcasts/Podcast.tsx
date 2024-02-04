@@ -83,6 +83,12 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
 
     const audioRef = React.useRef<HTMLAudioElement>(null);
 
+    React.useEffect(() => {
+        if (audioRef.current) {
+            audioRef.current.load();
+        }
+    }, [audioRef]);
+
     // update timeLeft when position changes
     React.useEffect(() => {
         if (audioRef) {
