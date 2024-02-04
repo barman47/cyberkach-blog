@@ -83,12 +83,6 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
 
     const audioRef = React.useRef<HTMLAudioElement>(null);
 
-    React.useEffect(() => {
-        if (audioRef.current) {
-            audioRef.current.load();
-        }
-    }, [audioRef]);
-
     // update timeLeft when position changes
     React.useEffect(() => {
         if (audioRef) {
@@ -98,6 +92,9 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
 
     // updare the slider while the audio plays and Reset audio player when audio plays to the end
     React.useEffect(() => {
+        if (audioRef.current) {
+            audioRef.current.load();
+        }
         const updateSlider = () => {
             if (audioRef.current) {
                 setPosition(audioRef.current.currentTime);
