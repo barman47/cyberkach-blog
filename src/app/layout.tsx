@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Quicksand } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 import './globals.css';
@@ -42,6 +43,7 @@ export default function RootLayout({
 					</ThemeRegistry>
 				</Providers>
 				<Analytics />
+				<SpeedInsights />
 			</body>
 		</html>
 	);
