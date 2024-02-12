@@ -204,7 +204,7 @@ const Footer = () => {
                         <MapMarker fontSize="inherit" />
                     </IconButton>
                     <Typography variant="body2">
-                        <a className={classes.link} href="!#">Lagos, Nigeria</a>
+                        <Typography variant="subtitle2" component="span" className={classes.link}>Lagos, Nigeria</Typography>
                     </Typography>
                 </Box>
             </Stack >
