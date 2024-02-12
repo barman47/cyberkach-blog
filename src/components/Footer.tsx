@@ -126,11 +126,7 @@ const useStyles = makeStyles()(theme => ({
     },
 
     copyright: {
-        padding: theme.spacing(2),
-
-        // [theme.breakpoints.down('md')]: {
-        //     justifyContent: 'center'
-        // }
+        padding: theme.spacing(2)
     },
 
     septem: {
