@@ -300,8 +300,8 @@ const Blog: React.FC<Props> = ({ pagination, posts }) => {
                             <Image 
                                 src={posts[0].imageUrl} 
                                 alt={posts[0].slug}
-                                width={300}
-                                height={100}
+                                width={800}
+                                height={400}
                                 className={classes.featuredPostImage}
                             />
                             <Box component="div">

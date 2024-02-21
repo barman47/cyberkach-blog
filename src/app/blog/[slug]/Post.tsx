@@ -134,8 +134,8 @@ const Post: React.FC<Props> = ({ post, posts }) => {
     return (
         <Box component="main" className={classes.root}>
             <Image 
-                width={100}
-                height={400}
+                width={1400}
+                height={600}
                 className={classes.image} 
                 src={post.imageUrl} 
                 alt={post.title} 
