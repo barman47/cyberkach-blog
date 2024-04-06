@@ -65,7 +65,7 @@ const NotFoundPage = () => {
             <Typography variant="h2">PAGE NOT FOUND</Typography>
             <Typography variant="subtitle2" component="p">THE PAGE YOU ARE LOOKING FOR CAN&#39;T BE FOUND!</Typography>
             <Button variant="contained" color="primary" component={Link} href="/">Take Me Home</Button>
-            <Typography variant="subtitle2" component="small">&copy; Copyright {new Date().getFullYear()}, CyberKach - All Rights Reserved</Typography>
+            <Typography variant="subtitle2" component="small">&copy; Copyright {new Date().getFullYear()}, Cyberkach - All Rights Reserved</Typography>
         </Box>
     );
 };

@@ -128,7 +128,7 @@ const Header = () => {
                                     width={150}
                                     height={10}
                                     src={isBlog ? "/assets/img/icon-small.png" : "/assets/img/logo.png"} 
-                                    alt="CyberKach Logo" 
+                                    alt="Cyberkach Logo" 
                                     className={isBlog ? classes.smallLogo : classes.logo} 
                                     priority
                                 />
@@ -157,7 +157,7 @@ const Header = () => {
                                 width={150}
                                 height={10}
                                 src={isBlog ? "/assets/img/icon-small.png" : "/assets/img/logo.png"} 
-                                alt="CyberKach Logo" 
+                                alt="Cyberkach Logo" 
                                 className={isBlog ? classes.smallLogo : classes.logo} 
                                 priority
                             />

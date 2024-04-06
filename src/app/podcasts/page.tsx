@@ -3,8 +3,8 @@ import { Metadata } from 'next';
 import Podcasts from './Podcasts';
 
 export const metadata: Metadata = {
-    title: 'Podcasts | CyberKach.com',
-    description: 'The CyberKach Podcast features fun, entertaining, educative, and mind-blowing discussions with cyber security subject matter expects.',
+    title: 'Podcasts | Cyberkach.com',
+    description: 'The Cyberkach Podcast features fun, entertaining, educative, and mind-blowing discussions with cyber security subject matter expects.',
 }
 
 async function getPodcasts () {

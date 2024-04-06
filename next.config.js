@@ -6,13 +6,13 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'storage.googleapis.com',
                 port: '',
-                pathname: '/cyberkach_posts_development/**'
+                pathname: '/Cyberkach_posts_development/**'
             },
             {
                 protocol: 'https',
                 hostname: 'storage.googleapis.com',
                 port: '',
-                pathname: '/cyberkach_posts/**'
+                pathname: '/Cyberkach_posts/**'
             }
         ]
     }

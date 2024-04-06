@@ -2,10 +2,10 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-        name: 'CyberKach',
-        short_name: 'CyberKach',
+        name: 'Cyberkach',
+        short_name: 'Cyberkach',
         start_url: '/',
-        description: 'CyberKach is a security consulting firm which assists clients achieve effective cyber programs and provides security awareness trainings.',
+        description: 'Cyberkach is a security consulting firm which assists clients achieve effective cyber programs and provides security awareness trainings.',
         id: '/',
         icons: [
             {

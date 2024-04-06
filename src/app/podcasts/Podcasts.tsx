@@ -115,7 +115,7 @@ const Podcasts: React.FC<Props> = ({ podcasts }) => {
             <Box component="header" className={classes.header}>
                 <Stack direction="row" justifyContent="space-between" alignItems="center">
                     <Box component="div" className={classes.titleContainer}>
-                        <Typography variant="h4" className={classes.title}>The CyberKach Podcast</Typography>
+                        <Typography variant="h4" className={classes.title}>The Cyberkach Podcast</Typography>
                         {/* <Typography variant="h6" className={classes.subtitle}>Onyekachi Okereke | Cyberkach.com</Typography> */}
                     </Box>
                     <Image 
@@ -130,7 +130,7 @@ const Podcasts: React.FC<Props> = ({ podcasts }) => {
             <Box component="section" className={classes.content}>
                 <Stack direction={matches ? 'column-reverse' : 'row'} alignItems={matches ? 'start' : 'center'} justifyContent="space-between" spacing={2}>
                     <Typography variant="h6" sx={{ fontWeight: 600 }}>Episodes</Typography>
-                    <Typography variant="body1" component="p">To access all episodes of The CyberKach Podcast on Spotify, <a className={classes.link} href="https://open.spotify.com/show/5EHlEIx63ZtUX828ycRXYl?si=c7776f20b06243d0" rel="noreferrer" target="_blank">click here.</a></Typography>
+                    <Typography variant="body1" component="p">To access all episodes of The Cyberkach Podcast on Spotify, <a className={classes.link} href="https://open.spotify.com/show/5EHlEIx63ZtUX828ycRXYl?si=c7776f20b06243d0" rel="noreferrer" target="_blank">click here.</a></Typography>
                 </Stack>
                 <Stack direction="column" component="div" spacing={2} mt={matches ? 1 : 3}>
                     {podcasts ? podcasts.map(podcast => (

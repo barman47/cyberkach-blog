@@ -62,9 +62,9 @@ const AboutUs: React.FC<{}> = () => {
     return (
         <Box component="section" className={classes.root}>
             <Box component="div">
-                <Typography variant="h4" className={classes.header}>About CyberKach</Typography>
+                <Typography variant="h4" className={classes.header}>About Cyberkach</Typography>
                 <Typography variant="body2" component="p" className={classes.text}>
-                    CyberKach is a cybersecurity education hub committed to empowering individuals and organizations with essential cybersecurity knowledge. Our mission is to deliver comprehensive security education through our blog, &#39;The CyberKach Podcast,&#39; and specialized training programs. With the motto &#39;cybersecurity at your fingertips,&#39; CyberKach is dedicated to making the journey to an effective security program seamless for our audience.
+                    Cyberkach is a cybersecurity education hub committed to empowering individuals and organizations with essential cybersecurity knowledge. Our mission is to deliver comprehensive security education through our blog, &#39;The Cyberkach Podcast,&#39; and specialized training programs. With the motto &#39;cybersecurity at your fingertips,&#39; Cyberkach is dedicated to making the journey to an effective security program seamless for our audience.
                 </Typography>
             </Box>
         </Box>

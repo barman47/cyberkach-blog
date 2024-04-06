@@ -184,7 +184,7 @@ const Post: React.FC<Props> = ({ post, posts }) => {
                                     url={url}
                                     title={post.title}
                                     summary="Page Summary Here"
-                                    source="CyberKach.com"
+                                    source="Cyberkach.com"
                                     placeholder=""
                                 >
                                     <Stack direction="row" alignItems="center">

@@ -108,9 +108,9 @@ const ContactUs = () => {
     const [loading, setLoading] = React.useState(false);
 
     const subjects = [
-        'Enquire About CyberKach Services',
+        'Enquire About Cyberkach Services',
         'Request for Quotation',
-        'Sponsor the CyberKach Podcast',
+        'Sponsor the Cyberkach Podcast',
         'Others'
     ];
 
@@ -238,7 +238,7 @@ const ContactUs = () => {
                                     inputProps={{ 'aria-label': 'check box with default' }}
                                 />
                                 <Typography variant="subtitle2" component="span">
-                                    By providing your details, you agree to the processing of your data as stipulated in the cyberkach
+                                    By providing your details, you agree to the processing of your data as stipulated in the Cyberkach
                                     &nbsp;<Link className={classes.link} href="privacyPolicy" target="_blank">privacy policy</Link>
                                 </Typography>
                             </Grid>
@@ -259,12 +259,12 @@ const ContactUs = () => {
                     <Stack direction="column" spacing={5} alignItems="flex-start">
                         <Image 
                             src="/assets/img/contact.svg" 
-                            alt="Contact CyberKach" 
+                            alt="Contact Cyberkach" 
                             className={classes.image} 
                             width={0}
                             height={0}
                         />
-                        <Tooltip title="Call CyberKach" TransitionComponent={Zoom} TransitionProps={{ timeout: 0 }}>
+                        <Tooltip title="Call Cyberkach" TransitionComponent={Zoom} TransitionProps={{ timeout: 0 }}>
                             <Typography
                                 variant="subtitle2"
                                 onClick={() => {
@@ -277,17 +277,17 @@ const ContactUs = () => {
                                 (+234) 803 381 7154
                             </Typography>
                         </Tooltip>
-                        <Tooltip title="Call CyberKach" TransitionComponent={Zoom} TransitionProps={{ timeout: 300 }}>
+                        <Tooltip title="Call Cyberkach" TransitionComponent={Zoom} TransitionProps={{ timeout: 300 }}>
                             <Typography
                                 variant="subtitle2"
                                 onClick={() => {
-                                    window.open('mailto:hello@cyberkach.com')
+                                    window.open('mailto:hello@Cyberkach.com')
                                 }}
                                 className={classes.contactItem}
 
                             >
                                 <Email className={classes.icon} />
-                                hello@cyberkach.com
+                                hello@Cyberkach.com
                             </Typography>
                         </Tooltip>
                         <Typography
@@ -303,7 +303,7 @@ const ContactUs = () => {
                                     aria-label="LinkedIn"
                                     className={classes.iconButton}
                                     onClick={() => {
-                                        window.open('https://www.linkedin.com/company/cyberkach/', '_blank', 'noopener,noreferrer')
+                                        window.open('https://www.linkedin.com/company/Cyberkach/', '_blank', 'noopener,noreferrer')
                                     }}
                                 >
                                     <Linkedin />
@@ -314,7 +314,7 @@ const ContactUs = () => {
                                     aria-label="Twitter"
                                     className={classes.iconButton}
                                     onClick={() => {
-                                        window.open('https://twitter.com/TheCyberKach', '_blank', 'noopener,noreferrer')
+                                        window.open('https://twitter.com/TheCyberkach', '_blank', 'noopener,noreferrer')
                                     }}
                                 >
                                     <Twitter />

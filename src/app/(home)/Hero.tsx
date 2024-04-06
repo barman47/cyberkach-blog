@@ -104,7 +104,7 @@ const Hero: React.FC<{}> = () => {
             <div className={classes.fullscreenVideoWrap}>
                 <Box component="div" className={classes.overlayContainer}>
                     <Typography variant="body1" className={classes.text}>
-                        Embrace cybersecurity excellence with CyberKach, where our focus is on empowering through education. Dive into our blog, tune into &#39;The CyberKach Podcast&#39; for insightful discussions, and enroll in specialized security training to ensure you and your organization stay resilient in the face of evolving threats.
+                        Embrace cybersecurity excellence with Cyberkach, where our focus is on empowering through education. Dive into our blog, tune into &#39;The Cyberkach Podcast&#39; for insightful discussions, and enroll in specialized security training to ensure you and your organization stay resilient in the face of evolving threats.
                     </Typography>
                 </Box>
                     <video autoPlay loop muted playsInline className={classes.reponsiveVideo}>

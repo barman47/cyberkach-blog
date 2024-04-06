@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 
 export const metadata: Metadata = {
-    title: 'Privacy Policy | CyberKach.com'
+    title: 'Privacy Policy | Cyberkach.com'
 }
 
 const useStyles = makeStyles()(theme => ({
@@ -36,7 +36,7 @@ const PrivacyPolicy: React.FC<{}> = () => {
                     <ListItemText
                         inset 
                         primary="1.	INTRODUCTION"
-                        secondary="CyberKach (“us”, “we”, or “our”) understands the criticality of privacy in handling your (“Data subject”) personal data. Hence, we want you to engage with us knowing that we value your Personal Data and that we protect it."
+                        secondary="Cyberkach (“us”, “we”, or “our”) understands the criticality of privacy in handling your (“Data subject”) personal data. Hence, we want you to engage with us knowing that we value your Personal Data and that we protect it."
                     />
                 </ListItem>
                 <ListItem>
@@ -50,13 +50,13 @@ const PrivacyPolicy: React.FC<{}> = () => {
                     <ListItemText 
                         inset
                         primary="2.	COLLECTABLE PERSONAL DATA"
-                        secondary="Personal information refers to data that could identify a specific individual such as names, addresses, e-mail addresses, and telephone numbers. Depending on your medium of interaction with CyberKach (online, offline, mobile phone, etc.), we collect various types of information from you, as described below."
+                        secondary="Personal information refers to data that could identify a specific individual such as names, addresses, e-mail addresses, and telephone numbers. Depending on your medium of interaction with Cyberkach (online, offline, mobile phone, etc.), we collect various types of information from you, as described below."
                     />
                 </ListItem>
                 <ListItem>
                     <List component="ul">
                         <ListItem>
-                            <ListItemText inset primary="•	Contact information- This includes any information you provide to CyberKach that would allow us to contact you personally, such as your name, residential address, e-mail address, phone number or next-of-kin information" />
+                            <ListItemText inset primary="•	Contact information- This includes any information you provide to Cyberkach that would allow us to contact you personally, such as your name, residential address, e-mail address, phone number or next-of-kin information" />
                         </ListItem>
                         <ListItem>
                             <ListItemText inset primary="•	Payment and Financial information: Any information that we need to make payments to you, including bank details such as bank name and branch, account name and number, etc." />
@@ -74,28 +74,28 @@ const PrivacyPolicy: React.FC<{}> = () => {
                     <ListItemText 
                         inset 
                         primary="3.	CONDITION FOR PROCESSING PERSONAL DATA:"
-                        secondary="•	CYBERKACH Personnel or any third party acting on its behalf shall only process your personal data if at least one of these conditions are met."
+                        secondary="•	Cyberkach Personnel or any third party acting on its behalf shall only process your personal data if at least one of these conditions are met."
                     />
                 </ListItem>
                 <ListItem>
                     <List component="ul">
                         <ListItem>
-                            <ListItemText inset primary="Consent: this refers to any freely given, specific, informed and unambiguous indication through a statement or clear affirmative action that signifies your agreement to the processing of your Personal Data by CyberKach" />
+                            <ListItemText inset primary="Consent: this refers to any freely given, specific, informed and unambiguous indication through a statement or clear affirmative action that signifies your agreement to the processing of your Personal Data by Cyberkach" />
                         </ListItem>
                         <ListItem>
                             <ListItemText inset primary="Contract: processing is necessary for the performance of a contract or entering a contract at the request of the Data Subject only." />
                         </ListItem>
                         <ListItem>
-                            <ListItemText inset primary="•	Legal obligation: processing is necessary for compliance with a legal obligation to which CyberKach is subject." />
+                            <ListItemText inset primary="•	Legal obligation: processing is necessary for compliance with a legal obligation to which Cyberkach is subject." />
                         </ListItem>
                         <ListItem>
                             <ListItemText inset primary="•	Vital interest: processing is necessary in order to protect the vital interests of the Individual or of another natural person." />
                         </ListItem>
                         <ListItem>
-                            <ListItemText inset primary="•	Public interest: processing is necessary for the performance of a task carried out in the public interest or in the exercise of official authority vested in CyberKach" />
+                            <ListItemText inset primary="•	Public interest: processing is necessary for the performance of a task carried out in the public interest or in the exercise of official authority vested in Cyberkach" />
                         </ListItem>
                         <ListItem>
-                            <ListItemText inset primary="•	Proper Motives: CyberKach shall not seek consent that may engender direct or indirect propagation of atrocities, hate, child rights violation, criminal acts and anti-social conduct" />
+                            <ListItemText inset primary="•	Proper Motives: Cyberkach shall not seek consent that may engender direct or indirect propagation of atrocities, hate, child rights violation, criminal acts and anti-social conduct" />
                         </ListItem>
                     </List>
                 </ListItem>
@@ -140,19 +140,19 @@ const PrivacyPolicy: React.FC<{}> = () => {
                 <ListItem>
                     <List component="ul">
                         <ListItem>
-                            <ListItemText inset primary="•	The right to request for access to their Personal Data where those requests are reasonable and permitted by law or regulation. CyberKach shall provide reasonable and accessible means for Individuals to submit their requests, which do not have to take any specific form and can be submitted by any method." />
+                            <ListItemText inset primary="•	The right to request for access to their Personal Data where those requests are reasonable and permitted by law or regulation. Cyberkach shall provide reasonable and accessible means for Individuals to submit their requests, which do not have to take any specific form and can be submitted by any method." />
                         </ListItem>
                         <ListItem>
-                            <ListItemText inset primary="•	The right to request that CyberKach erase your Personal Data if it is no longer valid or necessary for the purposes for which it was collected or if it is incomplete or inaccurate." />
+                            <ListItemText inset primary="•	The right to request that Cyberkach erase your Personal Data if it is no longer valid or necessary for the purposes for which it was collected or if it is incomplete or inaccurate." />
                         </ListItem>
                         <ListItem>
                             <ListItemText inset primary="•	The right to rectify or amend inaccurate or incomplete Personal Data." />
                         </ListItem>
                         <ListItem>
-                            <ListItemText inset primary="•	The right to withdraw your Consent at any time. This can be initiated by contacting CyberKach." />
+                            <ListItemText inset primary="•	The right to withdraw your Consent at any time. This can be initiated by contacting Cyberkach." />
                         </ListItem>
                         <ListItem>
-                            <ListItemText inset primary="•	The right to object to CyberKach’s processing of your Personal Data if there are compelling legitimate grounds to do so and to the extent permitted by law or regulation." />
+                            <ListItemText inset primary="•	The right to object to Cyberkach’s processing of your Personal Data if there are compelling legitimate grounds to do so and to the extent permitted by law or regulation." />
                         </ListItem>
                         <ListItem>
                             <ListItemText inset primary="•	The right to receive your Personal Data in a commonly used and machine-readable format and the right to transmit these data to another Data Controller when the processing is based on (explicit) consent or when the processing is necessary for the performance of a contract." />
@@ -178,7 +178,7 @@ const PrivacyPolicy: React.FC<{}> = () => {
                             <ListItemText inset primary="●	Hard Copy Forms: We maintain accurate records of the information that you provide to us via hard copy forms in a secure manner. When necessitated by legal or vital obligations, we archive these communications." />
                         </ListItem>
                         <ListItem>
-                            <ListItemText inset primary="●	Web Forms: We keep record of your personal details provided via the CyberKach website. Typically, such details are processed for the specific reasons they are collected and are kept in a secure manner." />
+                            <ListItemText inset primary="●	Web Forms: We keep record of your personal details provided via the Cyberkach website. Typically, such details are processed for the specific reasons they are collected and are kept in a secure manner." />
                         </ListItem>
                     </List>
                 </ListItem>
@@ -186,7 +186,7 @@ const PrivacyPolicy: React.FC<{}> = () => {
                     <ListItemText 
                         inset 
                         primary="7.	TRANSFER OF PERSONAL DATA" 
-                        secondary="Personal data collected by CyberKach may be transferred among its various divisions and affiliated companies, around the world, as well as transferred to select partners with your consent. The following describes the various scenarios for which we may share your Personal Data to a third party."
+                        secondary="Personal data collected by Cyberkach may be transferred among its various divisions and affiliated companies, around the world, as well as transferred to select partners with your consent. The following describes the various scenarios for which we may share your Personal Data to a third party."
                     />
                 </ListItem>
                 <ListItem>
@@ -206,7 +206,7 @@ const PrivacyPolicy: React.FC<{}> = () => {
                         <ListItem>
                             <ListItemText 
                                 inset 
-                                primary="●	Inter-Company transfers: Your Personal Data may be transferred to or accessible by other entities within the CyberKach. However, these entities will be bound by the terms of this Policy." 
+                                primary="●	Inter-Company transfers: Your Personal Data may be transferred to or accessible by other entities within the Cyberkach. However, these entities will be bound by the terms of this Policy." 
                             />
                         </ListItem>
                         <ListItem>
@@ -229,7 +229,7 @@ const PrivacyPolicy: React.FC<{}> = () => {
                             <ListItemText inset primary="•	Data Retention Policy: We ensure that your personal data are not retained for longer than necessary as determined by our data retention policy to reduce the likelihood/severity of a data breach." />
                         </ListItem>
                         <ListItem>
-                            <ListItemText inset primary="•	Personal Data Breach Notification: CYBERKACH will inform relevant authorities and if necessary affected individuals of personal data breach within 72 hours of being aware of the breach where Personal Breach refers to a breach of security leading to the accidental or unlawful destruction, loss, alteration, unauthorized disclosure of, or access to, personal data. This includes breaches that are the result of both accidental and deliberate causes." />
+                            <ListItemText inset primary="•	Personal Data Breach Notification: Cyberkach will inform relevant authorities and if necessary affected individuals of personal data breach within 72 hours of being aware of the breach where Personal Breach refers to a breach of security leading to the accidental or unlawful destruction, loss, alteration, unauthorized disclosure of, or access to, personal data. This includes breaches that are the result of both accidental and deliberate causes." />
                         </ListItem>
                     </List>
                 </ListItem>
@@ -244,7 +244,7 @@ const PrivacyPolicy: React.FC<{}> = () => {
                     <ListItemText 
                         inset 
                         primary="10.	DATA CONTROLLER & CONTACT" 
-                        secondary="Any question regarding this policy can be addressed to CYBERKACH at: (hello@cyberkach.com)" 
+                        secondary="Any question regarding this policy can be addressed to Cyberkach at: (hello@Cyberkach.com)" 
                     />
                 </ListItem>
             </List>

@@ -290,7 +290,7 @@ const Blog: React.FC<Props> = ({ pagination, posts }) => {
     return (
         <Box component="main" className={classes.root}>
             <Typography variant="h4" align="center">
-                The CyberKach Blog
+                The Cyberkach Blog
             </Typography>
             {loading ? <h4>One Moment . . .</h4>
                 :

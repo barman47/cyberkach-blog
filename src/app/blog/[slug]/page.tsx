@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const description = removeHtmlTags(post.body.slice(0, 161));
    
     return {
-        title: `${post.title} | CyberKach.com`,
+        title: `${post.title} | Cyberkach.com`,
         description,
         openGraph: {
             images: [post.imageUrl],
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             title,
             card: "summary",
             description,
-            creator: 'CyberKach',
+            creator: 'Cyberkach',
             images: {
                 url: post.imageUrl,
                 alt: post.slug,

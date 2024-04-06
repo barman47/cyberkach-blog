@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import Blog from './Blog';
 
 export const metadata: Metadata = {
-    title: 'Blog | CyberKach.com',
-    description: 'Learn key cyber security concepts and develop cyber skills by visiting the CyberKach blog.',
+    title: 'Blog | Cyberkach.com',
+    description: 'Learn key cyber security concepts and develop cyber skills by visiting the Cyberkach blog.',
 }
 
 async function getPosts (page: number, limit: number) {

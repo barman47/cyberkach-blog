@@ -106,7 +106,7 @@ const Newsletter: React.FC<{}> = () => {
                 <Image 
                     className={classes.image} 
                     src="/assets/img/newsletter.svg" 
-                    alt="CyberKach Newsletter" 
+                    alt="Cyberkach Newsletter" 
                     width={0}
                     height={0}
                 />

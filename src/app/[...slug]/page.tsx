@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const description = removeHtmlTags(post.body.slice(0, 161));
    
     return {
-        title: `${post.title} | CyberKach.com`,
+        title: `${post.title} | Cyberkach.com`,
         description,
         openGraph: {
             images: [post.imageUrl],
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             title,
             card: "summary",
             description,
-            creator: 'CyberKach',
+            creator: 'Cyberkach',
             images: {
                 url: post.imageUrl,
                 alt: post.slug,
@@ -67,7 +67,7 @@ interface Props {
     }
 }
 // This page should catch routes like this
-// https://cyberkach.com/2020/02/05/phishing/
+// https://Cyberkach.com/2020/02/05/phishing/
 
 const SingleBlogPage: React.FC<Props> = async ({ params }) => {
     const  { slug } = params;

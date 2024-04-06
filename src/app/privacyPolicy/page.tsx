@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import PrivacyPolicy from './PrivacyPolicy';
 
 export const metadata: Metadata = {
-    title: 'Privacy Policy | CyberKach.com'
+    title: 'Privacy Policy | Cyberkach.com'
 }
 
 const PrivacyPolicyPage: React.FC<{}> = () => {

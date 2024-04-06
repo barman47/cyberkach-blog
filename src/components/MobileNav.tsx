@@ -62,7 +62,7 @@ const MobileNav:React.FC<Props> = ({ toggleDrawer, drawerOpen }) => {
                         width={200}
                         height={50}
                         src="/assets/img/logo-full.png" 
-                        alt="CyberKach Logo" 
+                        alt="Cyberkach Logo" 
                         className={classes.drawerLogo} 
                     />
                 </Link>
@@ -92,7 +92,7 @@ const MobileNav:React.FC<Props> = ({ toggleDrawer, drawerOpen }) => {
                         <ListItemText primary="Contact Us" />
                     </ListItemLink>
                 </List>
-                <Typography variant="subtitle2" className={classes.copyright} >&copy; Copyright CyberKach {new Date().getFullYear()}</Typography>
+                <Typography variant="subtitle2" className={classes.copyright} >&copy; Copyright Cyberkach {new Date().getFullYear()}</Typography>
             </SwipeableDrawer>
         </Box>
     );

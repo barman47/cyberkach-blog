@@ -161,7 +161,7 @@ const Blog: React.FC<BlogProps> = ({ posts }) => {
 
     return (
         <section className={clsx('animate__animated animate__animate__fadeIn', classes.root)}>
-            <Typography variant="h4" className={classes.header}>The CyberKach Blog</Typography>
+            <Typography variant="h4" className={classes.header}>The Cyberkach Blog</Typography>
             <Typography variant="body2" className={classes.subtitle}>Visit our Blog to understand key cybersecurity concepts...</Typography>
             <Carousel 
                 responsive={responsive}
@@ -270,7 +270,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
                             url={URL}
                             title={title}
                             summary="Page Summary Here"
-                            source="CyberKach.com"
+                            source="Cyberkach.com"
                             placeholder=""
                         >
                             <Stack direction="row" alignItems="center">

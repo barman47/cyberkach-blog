@@ -13,8 +13,8 @@ import { Providers } from '@/redux/Provider';
 const quicksand = Quicksand({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  	title: 'Cyber Security at your finger tips | CyberKach.com',
-  	description: 'CyberKach is a security consulting firm which assists clients achieve effective cyber programs and provides security awareness trainings.',
+  	title: 'Cyber Security at your finger tips | Cyberkach.com',
+  	description: 'Cyberkach is a security consulting firm which assists clients achieve effective cyber programs and provides security awareness trainings.',
 }
 
 interface Props {

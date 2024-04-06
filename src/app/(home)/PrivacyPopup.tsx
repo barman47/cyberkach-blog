@@ -55,7 +55,7 @@ const PrivacyPopup:React.FC<{}> = () => {
             {open && 
                 <div className={classes.root}>
                     <Typography variant="subtitle2">
-                        By using our website, you agree to the processing of your data as stipulated in the CyberKach <Link className={classes.link} href="privacyPolicy" target="_blank">Privacy Policy.</Link>
+                        By using our website, you agree to the processing of your data as stipulated in the Cyberkach <Link className={classes.link} href="privacyPolicy" target="_blank">Privacy Policy.</Link>
                     </Typography>
                     <Button
                         className={classes.button}

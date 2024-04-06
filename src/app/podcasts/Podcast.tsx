@@ -188,7 +188,7 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
                             src="/assets/img/icon.png"
                             width={100}
                             height={100}
-                            alt="CyberKach Icon"
+                            alt="Cyberkach Icon"
                             className={classes.image}
                         />
                         <Typography variant="h6" className={classes.title}>{podcast.title}</Typography>
@@ -243,7 +243,7 @@ const Podcast: React.FC<Props> = ({ podcast }) => {
                         src="/assets/img/podcast.png"
                         width={100}
                         height={100}
-                        alt="CyberKach Icon"
+                        alt="Cyberkach Icon"
                         className={classes.image}
                     />
                     <Stack direction="column" className={classes.rightSide}>

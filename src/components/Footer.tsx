@@ -161,7 +161,7 @@ const Footer = () => {
         <Box component="footer" className={classes.root}>
             <Stack direction="row" justifyContent="center" className={classes.contactContainer}>
                 <Box component="div" className={(cx(classes.contact, classes.phone))}>
-                    <Tooltip title="Call CyberKach" TransitionComponent={Zoom} TransitionProps={{ timeout: 300 }}>
+                    <Tooltip title="Call Cyberkach" TransitionComponent={Zoom} TransitionProps={{ timeout: 300 }}>
                         <IconButton
                             size="large"
                             className={classes.buttonContainer}
@@ -177,19 +177,19 @@ const Footer = () => {
                     </Typography>
                 </Box>
                 <Box component="div" className={(cx(classes.contact, classes.email))}>
-                    <Tooltip title="Email CyberKach" TransitionComponent={Zoom} TransitionProps={{ timeout: 300 }}>
+                    <Tooltip title="Email Cyberkach" TransitionComponent={Zoom} TransitionProps={{ timeout: 300 }}>
                         <IconButton
                             size="large"
                             className={classes.buttonContainer} 
                             onClick={() => {
-                                window.open('mailto:hello@cyberkach.com')
+                                window.open('mailto:hello@Cyberkach.com')
                             }}
                         >
                             <Email fontSize="inherit" />
                         </IconButton>
                     </Tooltip>
                     <Typography variant="body2">
-                        <a className={classes.link} href="mailto:hello@cyberkach.com">hello@cyberkach.com</a>
+                        <a className={classes.link} href="mailto:hello@Cyberkach.com">hello@Cyberkach.com</a>
                     </Typography>
                 </Box>
                 <Box component="div" className={(cx(classes.contact, classes.location))}>
@@ -206,7 +206,7 @@ const Footer = () => {
             </Stack >
             <br />
             <Stack direction="row" spacing={5} justifyContent="center">
-                <Link href="/" className={classes.link} component={NextLink} variant="body1">CyberKach.com</Link>
+                <Link href="/" className={classes.link} component={NextLink} variant="body1">Cyberkach.com</Link>
                 <Typography variant="body1">| |</Typography>
                 <Link href="privacyPolicy" className={classes.link} component={NextLink} variant="body1" target="_blank" rel="noopener noreferrer">Privacy Policy</Link>
             </Stack>
@@ -219,7 +219,7 @@ const Footer = () => {
                             size="large"
                             className={cx(classes.linkedInIcon, classes.social)}
                             onClick={() => {
-                                window.open('https://www.linkedin.com/company/cyberkach/', '_blank', 'noopener,noreferrer')
+                                window.open('https://www.linkedin.com/company/Cyberkach/', '_blank', 'noopener,noreferrer')
                             }}
                         >
                             <Linkedin />
@@ -227,12 +227,12 @@ const Footer = () => {
                     </Tooltip>
                 </div>
                 <div>
-                    <Tooltip title="Follow CyberKach on Twitter" TransitionComponent={Zoom} TransitionProps={{ timeout: 300 }}>
+                    <Tooltip title="Follow Cyberkach on Twitter" TransitionComponent={Zoom} TransitionProps={{ timeout: 300 }}>
                         <IconButton 
                             size="large"
                             className={cx(classes.twitterIcon, classes.social)}
                             onClick={() => {
-                                window.open('https://twitter.com/TheCyberKach', '_blank', 'noopener,noreferrer')
+                                window.open('https://twitter.com/TheCyberkach', '_blank', 'noopener,noreferrer')
                             }}
                         >
                             <Twitter />
@@ -243,7 +243,7 @@ const Footer = () => {
             <Divider className={classes.divider} />
             <Stack direction={matches ? 'column' : 'row'} justifyContent="space-between" className={classes.copyright}>
                 <Typography variant="body2">
-                    &copy; Copyright {new Date().getFullYear()}, CyberKach - All Rights Reserved
+                    &copy; Copyright {new Date().getFullYear()}, Cyberkach - All Rights Reserved
                 </Typography>
                 <Box className={classes.septem}>
                     <Typography variant="body2">
