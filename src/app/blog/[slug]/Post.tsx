@@ -77,6 +77,13 @@ const useStyles = makeStyles()(theme => ({
         }
     },
 
+    postContent: {
+        '& p, & h1, & h2, & h3, & h4, & h5, & h6, & ul, & ol, & li, & div': {
+            margin: 0,
+            padding: 0
+        }
+    },
+
     aside: {
         borderLeft: '1px solid #f8f8f8',
         paddingLeft: theme.spacing(4)
@@ -143,7 +150,9 @@ const Post: React.FC<Props> = ({ post, posts }) => {
             <Box component="section" className={classes.content}>
                 <Box component="div" className={classes.main}>
                     <Typography variant="h6">{post.title}</Typography>
-                    {parse(post.body)}
+                    <Box component="div" className={classes.postContent}>
+                        {parse(post.body)}
+                    </Box>
                     <Stack direction="row" spacing={2} alignItems="center" className={classes.footer}>
                         <Tooltip 
                             title="Share Post" 
