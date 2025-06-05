@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import Link from 'next/link';
-import { Box, Button, CircularProgress, Divider, Stack, TextField, Typography, useMediaQuery } from '@mui/material';
+import NextLink from 'next/link';
+import { Box, Button, CircularProgress, Divider, Link, Stack, TextField, Typography, useMediaQuery } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import { AccountCircle, ArrowRight, CalendarMonthOutline, CheckCircle, ClockTimeOne, MapMarker } from 'mdi-material-ui';
 import toast from 'react-hot-toast';
@@ -219,10 +219,10 @@ const Webinar: React.FC<{}> = () => {
                         color="primary"
                         variant="contained"
                         startIcon={"🔐"}
-                        LinkComponent={Link}
+                        LinkComponent={NextLink}
                         href="/webinar/#form"
                     >
-                        Reserve My Spot Now
+                        Register Now
                     </Button>
                 </Box>
                 <Box component="section" className={classes.paper}>
@@ -296,10 +296,10 @@ const Webinar: React.FC<{}> = () => {
                                 color="primary"
                                 variant="contained"
                                 startIcon={"🎟️"}
-                                LinkComponent={Link}
+                                LinkComponent={NextLink}
                                 href="/webinar/#form"
                             >
-                                Register for the Full Series
+                                Register Now
                             </Button>
                         </Box>
                     </Stack>
@@ -409,6 +409,9 @@ const Webinar: React.FC<{}> = () => {
                                         disabled={loading}
                                     />
                                 </Stack>
+                                <Typography variant="body2" component="p">
+                                    We handle your data with care. Please see our <Link component={NextLink} underline="hover" href="/privacyPolicy" target="_blank" sx={{ color: BLUE }}>Privacy Policy</Link>
+                                </Typography>
                                 <Box alignSelf="center">
                                     <Button
                                         type="submit"
@@ -417,7 +420,7 @@ const Webinar: React.FC<{}> = () => {
                                         variant="contained"
                                         disabled={loading}
                                     >
-                                        {loading ? <CircularProgress size={24} /> : 'Submit Registration'}
+                                        {loading ? <><CircularProgress size={24} />&nbsp;&nbsp;REGISTER NOW</> : 'Register Now'}
                                     </Button>
                                 </Box>
                             </Stack>
