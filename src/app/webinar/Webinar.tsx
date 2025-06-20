@@ -2,13 +2,13 @@
 
 import * as React from 'react';
 import NextLink from 'next/link';
-import { Box, Button, CircularProgress, Divider, Link, Stack, TextField, Typography, useMediaQuery } from '@mui/material';
+import { Box, Button, Divider, Stack, Typography, useMediaQuery } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import { AccountCircle, ArrowRight, CalendarMonthOutline, CheckCircle, ClockTimeOne, MapMarker } from 'mdi-material-ui';
-import toast from 'react-hot-toast';
-import axios from 'axios';
+// import toast from 'react-hot-toast';
+// import axios from 'axios';
 
-import { Reservation, validateAddReservation } from '@/utils/validation/contact';
+// import { Reservation, validateAddReservation } from '@/utils/validation/contact';
 
 const BLUE = '#1A73E8';
 
@@ -123,74 +123,74 @@ const useStyles = makeStyles()((theme) => ({
         fontSize: '0.875rem'
     },
 
-    label: {
-        color: '#374151',
-        fontSize: '0.875rem',
-        fontWeight: 700
-    },
+    // label: {
+    //     color: '#374151',
+    //     fontSize: '0.875rem',
+    //     fontWeight: 700
+    // },
 
-    formContainer: {
-        margin: 'auto',
-        width: '40vw',
+    // formContainer: {
+    //     margin: 'auto',
+    //     width: '40vw',
 
-        [theme.breakpoints.down('md')]: {
-            width: '60vw'
-        },
+    //     [theme.breakpoints.down('md')]: {
+    //         width: '60vw'
+    //     },
 
-        [theme.breakpoints.down('sm')]: {
-            width: '100%'
-        }
-    }
+    //     [theme.breakpoints.down('sm')]: {
+    //         width: '100%'
+    //     }
+    // }
 }));
 
 const Webinar: React.FC<{}> = () => {
     const { classes, theme } = useStyles();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-    const [firstName, setFirstName] = React.useState('');
-    const [lastName, setLastName] = React.useState('');
-    const [email, setEmail] = React.useState('');
-    const [loading, setLoading] = React.useState(false);
-    const [errors, setErrors] = React.useState<Reservation>({} as Reservation);
+    // const [firstName, setFirstName] = React.useState('');
+    // const [lastName, setLastName] = React.useState('');
+    // const [email, setEmail] = React.useState('');
+    // const [loading, setLoading] = React.useState(false);
+    // const [errors, setErrors] = React.useState<Reservation>({} as Reservation);
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setErrors({} as Reservation);
+    // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault();
+    //     setErrors({} as Reservation);
 
-        const data: Reservation = {
-            firstName,
-            lastName,
-            email
-        };
+    //     const data: Reservation = {
+    //         firstName,
+    //         lastName,
+    //         email
+    //     };
 
-        const { errors, isValid } = validateAddReservation(data);
+    //     const { errors, isValid } = validateAddReservation(data);
 
-         if (!isValid) {
-            toast.error('Invalid Information');
-            return setErrors({ ...errors});
-        }
+    //      if (!isValid) {
+    //         toast.error('Invalid Information');
+    //         return setErrors({ ...errors});
+    //     }
 
-        setLoading(true);
-        try {
-            await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/reservation`, data);
-            toast.success("Reservation created successfully");
-            setLoading(false);
-            setFirstName('');
-            setLastName('');
-            setEmail('');
-        } catch (error: any) {
-            setLoading(false);
-            console.error(error);
-            console.log(error?.message);
-            if (error.message) {
-                return toast.error(error.message);
-            }
-            if (axios.isAxiosError(error) && error.response) {
-                return toast.error(error.response.data.errors.msg);
-            }
-            return toast.error('Sending Failed!');
-        }
-    };
+    //     setLoading(true);
+    //     try {
+    //         await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/reservation`, data);
+    //         toast.success("Reservation created successfully");
+    //         setLoading(false);
+    //         setFirstName('');
+    //         setLastName('');
+    //         setEmail('');
+    //     } catch (error: any) {
+    //         setLoading(false);
+    //         console.error(error);
+    //         console.log(error?.message);
+    //         if (error.message) {
+    //             return toast.error(error.message);
+    //         }
+    //         if (axios.isAxiosError(error) && error.response) {
+    //             return toast.error(error.response.data.errors.msg);
+    //         }
+    //         return toast.error('Sending Failed!');
+    //     }
+    // };
 
     return (
         <Box component="main" className={classes.root}>
@@ -210,7 +210,7 @@ const Webinar: React.FC<{}> = () => {
                     </Stack>
                     <Stack direction="row" gap={1}>
                         <MapMarker className={classes.icon} />
-                        <Typography variant="body1" component="p">Live &amp; Online</Typography>
+                        <Typography variant="body1" component="p">Zoom Webinars Online</Typography>
                     </Stack>
                 </Stack>
                 <Box alignSelf="center">
@@ -220,7 +220,8 @@ const Webinar: React.FC<{}> = () => {
                         variant="contained"
                         startIcon={"🔐"}
                         LinkComponent={NextLink}
-                        href="/webinar/#form"
+                        href="https://zoom.us/webinar/register/WN_VAnd_SLlQOqAQyBYh6rQAg"
+                        target="_blank"
                     >
                         Register Now
                     </Button>
@@ -297,7 +298,8 @@ const Webinar: React.FC<{}> = () => {
                                 variant="contained"
                                 startIcon={"🎟️"}
                                 LinkComponent={NextLink}
-                                href="/webinar/#form"
+                                href="https://zoom.us/webinar/register/WN_VAnd_SLlQOqAQyBYh6rQAg"
+                                target="_blank"
                             >
                                 Register Now
                             </Button>
@@ -365,7 +367,7 @@ const Webinar: React.FC<{}> = () => {
                     <Typography variant="body2" component="p" className={classes.text}>Get actionable ideas to bring to your team</Typography>
                     <Typography variant="body2" component="p" className={classes.text}>Connect with like-minded professionals</Typography>
                 </Box>
-                <Box component="section" className={classes.paper} id="form">
+                {/*<Box component="section" className={classes.paper} id="form">
                     <Stack direction="column" alignItems="stretch" gap={3} className={classes.formContainer}>
                         <Typography variant="h5" className={classes.header} sx={{ textAlign: 'center' }}>Register Now for the Webinar Series</Typography>
                         <form noValidate onSubmit={handleSubmit}>
@@ -426,7 +428,7 @@ const Webinar: React.FC<{}> = () => {
                             </Stack>
                         </form>
                     </Stack>
-                </Box>
+                </Box>*/}
             </Stack>
         </Box>
     );
