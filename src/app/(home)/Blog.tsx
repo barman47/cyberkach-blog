@@ -30,7 +30,7 @@ import { Link as LinkIcon, Linkedin, Twitter } from 'mdi-material-ui';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-import { Post } from '@/interfaces';
+import { Post as PostData } from '@/interfaces';
 import { LIGHT_GREY, OFF_BLACK, OFF_WHITE } from '../theme';
 
 const useStyles = makeStyles()(theme => ({
@@ -126,7 +126,7 @@ const useStyles = makeStyles()(theme => ({
 }));
 
 interface BlogProps {
-    posts: Post[];
+    posts: PostData[];
 }
 
 const Blog: React.FC<BlogProps> = ({ posts }) => {
@@ -195,7 +195,7 @@ const Blog: React.FC<BlogProps> = ({ posts }) => {
 }
 
 interface PostProps {
-    post: Post;
+    post: PostData;
 }
 
 const Post: React.FC<PostProps> = ({ post }) => {

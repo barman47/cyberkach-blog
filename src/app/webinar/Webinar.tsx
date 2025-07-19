@@ -1,25 +1,20 @@
 'use client';
 
 import * as React from 'react';
-import NextLink from 'next/link';
-import { Box, Button, Divider, Stack, Typography, useMediaQuery } from '@mui/material';
+import { Box, Button, Container, FormControlLabel, Radio, RadioGroup, Stack, TextField, Typography } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
-import { AccountCircle, ArrowRight, CalendarMonthOutline, CheckCircle, ClockTimeOne, MapMarker } from 'mdi-material-ui';
-// import toast from 'react-hot-toast';
-// import axios from 'axios';
+import { ContentPaste, Download, FileDocument, Shield } from 'mdi-material-ui';
+import toast from 'react-hot-toast';
+import axios from 'axios';
 
-// import { Reservation, validateAddReservation } from '@/utils/validation/contact';
+import { Feedback, validateAddFeedback } from '@/utils/validation/contact';
 
 const BLUE = '#1A73E8';
 
 const useStyles = makeStyles()((theme) => ({
     root: {
-        marginTop: theme.spacing(9),
-        padding: theme.spacing(3),
-
-        [theme.breakpoints.down('sm')]: {
-            padding: theme.spacing(1)
-        }
+        marginBottom: theme.spacing(15),
+        marginTop: theme.spacing(15)
     },
 
     title: {
@@ -36,6 +31,16 @@ const useStyles = makeStyles()((theme) => ({
             fontSize: '1.5rem'
         }
     },
+
+    secondTitle: {
+        color: theme.palette.primary.main,
+        fontWeight: 600,
+        textAlign: 'center',
+
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '1.5rem'
+        }
+    },
     
     subTitle: {
         color: '#374151',
@@ -44,7 +49,7 @@ const useStyles = makeStyles()((theme) => ({
         textAlign: 'center',
 
         [theme.breakpoints.down('sm')]: {
-            fontSize: '1.3rem'
+            fontSize: '1rem'
         }
     },
 
@@ -123,314 +128,224 @@ const useStyles = makeStyles()((theme) => ({
         fontSize: '0.875rem'
     },
 
-    // label: {
-    //     color: '#374151',
-    //     fontSize: '0.875rem',
-    //     fontWeight: 700
-    // },
-
-    // formContainer: {
-    //     margin: 'auto',
-    //     width: '40vw',
-
-    //     [theme.breakpoints.down('md')]: {
-    //         width: '60vw'
-    //     },
-
-    //     [theme.breakpoints.down('sm')]: {
-    //         width: '100%'
-    //     }
-    // }
+    label: {
+        color: '#374151',
+        fontSize: '0.875rem',
+        fontWeight: 700
+    }
 }));
 
+const OTHER = 'Other';
+
+const ROLES: string[] = [
+    'CISO',
+    'Security Leader / Manager',
+    'Engineer / Developer',
+    'Data Scientist / AI Practitioner',
+    'Consultant',
+    OTHER
+];
+
 const Webinar: React.FC<{}> = () => {
-    const { classes, theme } = useStyles();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const { classes } = useStyles();
 
-    // const [firstName, setFirstName] = React.useState('');
-    // const [lastName, setLastName] = React.useState('');
-    // const [email, setEmail] = React.useState('');
-    // const [loading, setLoading] = React.useState(false);
-    // const [errors, setErrors] = React.useState<Reservation>({} as Reservation);
+    const [role, setRole] = React.useState('');
+    const [otherRole, setOtherRole] = React.useState('');
+    const [mostValuableInsight, setMostValuableInsight] = React.useState('');
+    const [challenges, setChallenges] = React.useState('');
+    const [futureTopics, setFutureTopics] = React.useState('');
+    const [loading, setLoading] = React.useState(false);
+    const [surveyCompleted, setSurveyCompleted] = React.useState(false);
+    const [errors, setErrors] = React.useState<Feedback>({} as Feedback);
 
-    // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    //     e.preventDefault();
-    //     setErrors({} as Reservation);
+    const scrollToDownloadButton = () => {
+        const downloadButton = document.querySelector('#download-button') as HTMLElement;
+        if (downloadButton) {
+            downloadButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    };
 
-    //     const data: Reservation = {
-    //         firstName,
-    //         lastName,
-    //         email
-    //     };
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setErrors({} as Feedback);
 
-    //     const { errors, isValid } = validateAddReservation(data);
+        const data: Feedback = {
+            role: role === OTHER ? otherRole : role,
+            mostValuableInsight,
+            challenges,
+            futureTopics
+        };
 
-    //      if (!isValid) {
-    //         toast.error('Invalid Information');
-    //         return setErrors({ ...errors});
-    //     }
+        const { errors, isValid } = validateAddFeedback(data);
 
-    //     setLoading(true);
-    //     try {
-    //         await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/reservation`, data);
-    //         toast.success("Reservation created successfully");
-    //         setLoading(false);
-    //         setFirstName('');
-    //         setLastName('');
-    //         setEmail('');
-    //     } catch (error: any) {
-    //         setLoading(false);
-    //         console.error(error);
-    //         console.log(error?.message);
-    //         if (error.message) {
-    //             return toast.error(error.message);
-    //         }
-    //         if (axios.isAxiosError(error) && error.response) {
-    //             return toast.error(error.response.data.errors.msg);
-    //         }
-    //         return toast.error('Sending Failed!');
-    //     }
-    // };
+         if (!isValid) {
+            toast.error('Invalid Information');
+            return setErrors({ ...errors});
+        }
+
+        setLoading(true);
+        try {
+            await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/feedback`, data);
+            toast.success("Feeback sent successfully");
+            setLoading(false);
+            setRole('');
+            setOtherRole('');
+            setMostValuableInsight('')
+            setChallenges('');
+            setFutureTopics('');
+            setSurveyCompleted(true);
+            scrollToDownloadButton();
+        } catch (error: any) {
+            setLoading(false);
+            console.error(error);
+            console.log(error?.message);
+            if (error.message) {
+                return toast.error(error.message);
+            }
+            if (axios.isAxiosError(error) && error.response) {
+                return toast.error(error.response.data.errors.msg);
+            }
+            return toast.error('Error Sending Feedback!');
+        }
+    };
+
+    const downloadTemplate = () => {
+        const link = document.createElement('a');
+        link.href= '/templatesforcyberkachwebinarpage.zip';
+        link.download = 'templatesforcyberkachwebinarpage.zip';
+        link.click();
+
+        toast.success('Download started');
+    };
 
     return (
-        <Box component="main" className={classes.root}>
+        <Container component="main" className={classes.root}>
             <Stack direction="column" gap={3}>
-                <Stack direction="column">
-                    <Typography variant="h4" className={classes.subTitle}>The CyberKach Webinar Series 2025</Typography>
-                    <Typography variant="h2" className={classes.title}>AI Security in Practice: Real Voices, Real Risks, Real Solutions</Typography>
+                <Stack direction="column" gap={3}>
+                    <Typography variant="h4" className={classes.title}>Thank You for Attending the Cyberkach AI Security Webinar Series!</Typography>
+                    <Typography variant="h2" className={classes.subTitle}>We hope you found the sessions insightful.</Typography>
+                    <Typography variant="h2" className={classes.subTitle}>As promised, we&#39;ve prepared a free AI Security Policy Pack to help you strengthen AI governance. Before you download it, we&#39;d appreciate your quick feedback below.</Typography>
                 </Stack>
-                <Stack direction={isMobile ? 'column' : 'row'} justifyContent="center" gap={2}>
-                    <Stack direction="row" gap={1}>
-                        <CalendarMonthOutline className={classes.icon} />
-                        <Typography variant="body1" component="p">June 25, July 2, July 9, 2025</Typography>
-                    </Stack>
-                    <Stack direction="row" gap={1}>
-                        <ClockTimeOne className={classes.icon} />
-                        <Typography variant="body1" component="p">13:00 GMT+1</Typography>
-                    </Stack>
-                    <Stack direction="row" gap={1}>
-                        <MapMarker className={classes.icon} />
-                        <Typography variant="body1" component="p">Zoom Webinars Online</Typography>
-                    </Stack>
-                </Stack>
-                <Box alignSelf="center">
-                    <Button
-                        size="large"
-                        color="primary"
-                        variant="contained"
-                        startIcon={"🔐"}
-                        LinkComponent={NextLink}
-                        href="https://zoom.us/webinar/register/WN_VAnd_SLlQOqAQyBYh6rQAg"
-                        target="_blank"
-                    >
-                        Register Now
-                    </Button>
-                </Box>
                 <Box component="section" className={classes.paper}>
-                    <Typography variant="h5" className={classes.header}>What to Expect</Typography>
-                    <Typography variant="body2" component="p" className={classes.text}>This 3-part live webinar series brings together cybersecurity leaders, AI innovators, and risk managers to explore how artificial intelligence is reshaping security — from coding to compliance to the supply chain.</Typography>
-                    <Typography variant="body2" component="p" className={classes.text}>Each session is designed for hands-on practitioners and professionals navigating the fast-evolving AI landscape.</Typography>
-                </Box>
-                <Box component="section" className={classes.paper}>
-                    <Typography variant="h5" className={classes.header}>Webinar Lineup</Typography>
-                    <Stack direction="column" gap={4}>
-                        <Stack direction="column" gap={1}>
-                            <Stack direction="row" alignItems="center" gap={1}>
-                                <CheckCircle sx={{ color: '#22c55d' }} />
-                                <Typography variant="h4" className={classes.webinarDetailsTitle}>Day 1 - June 25, 2025</Typography>
+                    <form noValidate onSubmit={onSubmit}>
+                        <Stack direction="column" gap={4}>
+                            <Typography variant="h4" className={classes.secondTitle}>Your Feedback Matters!</Typography>
+                            <Stack direction="column" gap={1}>
+                                <Typography variant="body2" component="p" className={classes.label}>What role best describes you?</Typography>
+                                <RadioGroup
+                                    aria-labelledby="role-radio-group-label"
+                                    defaultValue="female"
+                                    name="radio-buttons-group"
+                                >
+                                    {ROLES.map((item, index) => {
+                                        if (index === ROLES.length - 1) {
+                                            return (
+                                                <Stack key={index} direction="row" alignItems="center">
+                                                    <FormControlLabel value={item} control={<Radio onChange={(e: React.ChangeEvent<HTMLInputElement>) => setRole(e.target.value)} />} label={item} />
+                                                    <TextField
+                                                        type="text"
+                                                        size="small"
+                                                        placeholder="Please specify"
+                                                        value={otherRole}
+                                                        onChange={(e) => setOtherRole(e.target.value)}
+                                                        error={!!errors.role}
+                                                        helperText={errors.role ?? ''}
+                                                        disabled={loading || role !== OTHER}
+                                                    />
+                                                </Stack>
+                                            );
+                                        }
+                                        return (
+                                            <FormControlLabel key={item} value={item} control={<Radio onChange={(e: React.ChangeEvent<HTMLInputElement>) => setRole(e.target.value)} checked={role === item} />} label={item} sx={{ alignSelf: 'flex-start' }} />
+                                        );
+                                    })}
+                                </RadioGroup>
                             </Stack>
-                            <Typography variant="body2" component="p" className={classes.listItem}><strong>“Vibe Coding”: Managing Security Risks in AI-Enhanced Products</strong></Typography>
-                            <Typography variant="body2" component="p" className={classes.listItem}>AI copilots, developer assistants, and LLM-integrated apps are redefining how we build software. But are we introducing new risks?</Typography>
-                            <Stack direction="row" alignItems="center" gap={1}>
-                                <ArrowRight sx={{ color: BLUE }} />
-                                <Typography variant="body2" component="p" className={classes.listItem}>Emerging threats from AI-generated code</Typography>
+                            <Stack direction="column" gap={1}>
+                                <Typography variant="body2" component="p" className={classes.label}>What was the most valuable insight or idea you took away from the webinar(s)?</Typography>
+                                <TextField
+                                    type="text"
+                                    size="medium"
+                                    placeholder="Share your key learning points"
+                                    value={mostValuableInsight}
+                                    onChange={(e) => setMostValuableInsight(e.target.value)}
+                                    error={!!errors.mostValuableInsight}
+                                    helperText={errors.mostValuableInsight ?? ''}
+                                    disabled={loading}
+                                    multiline
+                                    minRows={5}
+                                />
                             </Stack>
-                            <Stack direction="row" alignItems="center" gap={1}>
-                                <ArrowRight sx={{ color: BLUE }} />
-                                <Typography variant="body2" component="p" className={classes.listItem}>Risk management in fast-paced dev environments</Typography>
+                            <Stack direction="column" gap={1}>
+                                <Typography variant="body2" component="p" className={classes.label}>What challenges are you currently facing with AI security?</Typography>
+                                <TextField
+                                    type="text"
+                                    size="medium"
+                                    placeholder="Describe your challenges"
+                                    value={challenges}
+                                    onChange={(e) => setChallenges(e.target.value)}
+                                    error={!!errors.challenges}
+                                    helperText={errors.challenges ?? ''}
+                                    disabled={loading}
+                                    multiline
+                                    minRows={5}
+                                />
                             </Stack>
-                        </Stack>
-                        <Divider />
-                        <Stack direction="column" gap={1}>
-                            <Stack direction="row" alignItems="center" gap={1}>
-                                <CheckCircle sx={{ color: '#22c55d' }} />
-                                <Typography variant="h4" className={classes.webinarDetailsTitle}>Day 2 - July 2, 2025</Typography>
+                            <Stack direction="column" gap={1}>
+                                <Typography variant="body2" component="p" className={classes.label}>What topics would you like to see covered in future webinars or whitepapers?</Typography>
+                                <TextField
+                                    type="text"
+                                    size="medium"
+                                    placeholder="Suggest topics..."
+                                    value={futureTopics}
+                                    onChange={(e) => setFutureTopics(e.target.value)}
+                                    error={!!errors.futureTopics}
+                                    helperText={errors.futureTopics ?? ''}
+                                    disabled={loading}
+                                    multiline
+                                    minRows={5}
+                                />
                             </Stack>
-                            <Typography variant="body2" component="p" className={classes.listItem}><strong>Third-Party AI Tools: A New Frontier for Supply Chain Risk</strong></Typography>
-                            <Typography variant="body2" component="p" className={classes.listItem}>When your vendors, tools, and platforms all integrate AI — where does your attack surface end?</Typography>
-                            <Stack direction="row" alignItems="center" gap={1}>
-                                <ArrowRight sx={{ color: BLUE }} />
-                                <Typography variant="body2" component="p" className={classes.listItem}>Mapping exposure to third-party AI tools</Typography>
-                            </Stack>
-                            <Stack direction="row" alignItems="center" gap={1}>
-                                <ArrowRight sx={{ color: BLUE }} />
-                                <Typography variant="body2" component="p" className={classes.listItem}>Real-world breaches and vendor chain risks</Typography>
-                            </Stack>
-                            <Stack direction="row" alignItems="center" gap={1}>
-                                <ArrowRight sx={{ color: BLUE }} />
-                                <Typography variant="body2" component="p" className={classes.listItem}>Frameworks for AI-driven TPRM</Typography>
-                            </Stack>
-                        </Stack>
-                        <Divider />
-                        <Stack direction="column" gap={1}>
-                            <Stack direction="row" alignItems="center" gap={1}>
-                                <CheckCircle sx={{ color: '#22c55d' }} />
-                                <Typography variant="h4" className={classes.webinarDetailsTitle}>Day 3 - July 9, 2025</Typography>
-                            </Stack>
-                            <Typography variant="body2" component="p" className={classes.listItem}><strong>AI Governance: What Security Leaders Must Get Right</strong></Typography>
-                            <Stack direction="row" alignItems="center" gap={1}>
-                                <ArrowRight sx={{ color: BLUE }} />
-                                <Typography variant="body2" component="p" className={classes.listItem}>Building trustworthy, explainable AI</Typography>
-                            </Stack>
-                            <Stack direction="row" alignItems="center" gap={1}>
-                                <ArrowRight sx={{ color: BLUE }} />
-                                <Typography variant="body2" component="p" className={classes.listItem}>Aligning security, legal, and ethics in governance</Typography>
-                            </Stack>
-                            <Stack direction="row" alignItems="center" gap={1}>
-                                <ArrowRight sx={{ color: BLUE }} />
-                                <Typography variant="body2" component="p" className={classes.listItem}>Executive strategies for resilient AI adoption</Typography>
-                            </Stack>
-                        </Stack>
-                        <Box alignSelf="center">
                             <Button
-                                size="large"
-                                color="primary"
+                                type="submit"
+                                size="medium"
                                 variant="contained"
-                                startIcon={"🎟️"}
-                                LinkComponent={NextLink}
-                                href="https://zoom.us/webinar/register/WN_VAnd_SLlQOqAQyBYh6rQAg"
-                                target="_blank"
+                                color="primary"
+                                sx={{ alignSelf: 'flex-start' }}
+                                disabled={loading}
                             >
-                                Register Now
+                                {loading ? 'Submiting Feedback . . .' : 'Submit Feedback'}
                             </Button>
-                        </Box>
-                    </Stack>
+                            <Typography variant="h6" className={classes.text}>Once you complete the survey, you&#39;ll get access to the AI Security Policy Pack.</Typography>
+                        </Stack>
+                    </form>
                 </Box>
                 <Box component="section" className={classes.paper}>
-                    <Typography variant="h5" className={classes.header}>Featured Speakers</Typography>
-                    <Box component="div" className={classes.speakers}>
-                        <Stack direction="row" gap={1}>
-                            <AccountCircle sx={{ color: BLUE }} />
-                            <Stack direction="column">
-                                <Typography variant="body1" component="p" className={classes.speakerName}>Charles Onochie</Typography>
-                                <Typography variant="body2" component="p" className={classes.speakerPosition}>VP of Information Security & Global CISO, GAN</Typography>
-                            </Stack>
+                    <Stack direction="column" alignItems="center" gap={3}>
+                        <Typography variant="h4" className={classes.secondTitle}>Download Your Free AI Security Policy Pack</Typography>
+                        <Typography variant="body1" component="p">This exclusive pack includes essential templates to help you build robust AI governance:</Typography>
+                        <Stack direction="column" gap={1}>
+                            <Stack direction="row" gap={1} alignItems="center"><FileDocument color="info" /><Typography variant="body1" component="p">AI Policy Template</Typography></Stack>
+                            <Stack direction="row" gap={1} alignItems="center"><Shield color="info" /><Typography variant="body1" component="p">AI Security Policy Template</Typography></Stack>
+                            <Stack direction="row" gap={1} alignItems="center"><ContentPaste color="info" /><Typography variant="body1" component="p">AI Readiness Checklist</Typography></Stack>
                         </Stack>
-                        <Stack direction="row" gap={1}>
-                            <AccountCircle sx={{ color: BLUE }} />
-                            <Stack direction="column">
-                                <Typography variant="body1" component="p" className={classes.speakerName}>Marcal Santos</Typography>
-                                <Typography variant="body2" component="p" className={classes.speakerPosition}>vCISO & Founder, SecureLeap</Typography>
-                            </Stack>
-                        </Stack>
-                        <Stack direction="row" gap={1}>
-                            <AccountCircle sx={{ color: BLUE }} />
-                            <Stack direction="column">
-                                <Typography variant="body1" component="p" className={classes.speakerName}>Gbolabo Awelewa</Typography>
-                                <Typography variant="body2" component="p" className={classes.speakerPosition}>Chief Solutions Officer, Cybervergent</Typography>
-                            </Stack>
-                        </Stack>
-                        <Stack direction="row" gap={1}>
-                            <AccountCircle sx={{ color: BLUE }} />
-                            <Stack direction="column">
-                                <Typography variant="body1" component="p" className={classes.speakerName}>Orakwe John</Typography>
-                                <Typography variant="body2" component="p" className={classes.speakerPosition}>AI Programs Lead</Typography>
-                            </Stack>
-                        </Stack>
-                        <Stack direction="row" gap={1}>
-                            <AccountCircle sx={{ color: BLUE }} />
-                            <Stack direction="column">
-                                <Typography variant="body1" component="p" className={classes.speakerName}>Helen Oluyemi</Typography>
-                                <Typography variant="body2" component="p" className={classes.speakerPosition}>Information Security Manager, Pollinate</Typography>
-                            </Stack>
-                        </Stack>
-                        <Stack direction="row" gap={1}>
-                            <AccountCircle sx={{ color: BLUE }} />
-                            <Stack direction="column">
-                                <Typography variant="body1" component="p" className={classes.speakerName}>Emmanuel Agidi</Typography>
-                                <Typography variant="body2" component="p" className={classes.speakerPosition}>Manager of Digital Audit, PWC UK</Typography>
-                            </Stack>
-                        </Stack>
-                        <Stack direction="row" gap={1}>
-                            <AccountCircle sx={{ color: BLUE }} />
-                            <Stack direction="column">
-                                <Typography variant="body1" component="p" className={classes.speakerName}>Rypson Ugwuzor</Typography>
-                                <Typography variant="body2" component="p" className={classes.speakerPosition}>Manager, Cyber Security & Intelligent Automation, KPMG</Typography>
-                            </Stack>
-                        </Stack>
-                    </Box>
-                </Box>
-                <Box component="section" className={classes.paper}>
-                    <Typography variant="h5" className={classes.header}>Why Attend?</Typography>
-                    <Typography variant="body2" component="p" className={classes.text}>Stay ahead of AI-driven threats</Typography>
-                    <Typography variant="body2" component="p" className={classes.text}>Hear directly from leaders doing the work</Typography>
-                    <Typography variant="body2" component="p" className={classes.text}>Get actionable ideas to bring to your team</Typography>
-                    <Typography variant="body2" component="p" className={classes.text}>Connect with like-minded professionals</Typography>
-                </Box>
-                {/*<Box component="section" className={classes.paper} id="form">
-                    <Stack direction="column" alignItems="stretch" gap={3} className={classes.formContainer}>
-                        <Typography variant="h5" className={classes.header} sx={{ textAlign: 'center' }}>Register Now for the Webinar Series</Typography>
-                        <form noValidate onSubmit={handleSubmit}>
-                            <Stack direction="column" gap={4}>
-                                <Stack direction="column" gap={1}>
-                                    <Typography variant="body2" component="p" className={classes.label}>First Name:</Typography>
-                                    <TextField
-                                        type="text"
-                                        size="medium"
-                                        placeholder="Your First Name"
-                                        value={firstName}
-                                        onChange={(e) => setFirstName(e.target.value)}
-                                        error={!!errors.firstName}
-                                        helperText={errors.firstName ?? ''}
-                                        disabled={loading}
-                                    />
-                                </Stack>
-                                <Stack direction="column" gap={1}>
-                                    <Typography variant="body2" component="p" className={classes.label}>Last Name:</Typography>
-                                    <TextField
-                                        type="text"
-                                        size="medium"
-                                        placeholder="Your Last Name"
-                                        value={lastName}
-                                        onChange={(e) => setLastName(e.target.value)}
-                                        error={!!errors.lastName}
-                                        helperText={errors.lastName ?? ''}
-                                        disabled={loading}
-                                    />
-                                </Stack>
-                                <Stack direction="column" gap={1}>
-                                    <Typography variant="body2" component="p" className={classes.label}>Email Address:</Typography>
-                                    <TextField
-                                        type="email"
-                                        size="medium"
-                                        placeholder="email@example.com"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        error={!!errors.email}
-                                        helperText={errors.email ?? ''}
-                                        disabled={loading}
-                                    />
-                                </Stack>
-                                <Typography variant="body2" component="p">
-                                    We handle your data with care. Please see our <Link component={NextLink} underline="hover" href="/privacyPolicy" target="_blank" sx={{ color: BLUE }}>Privacy Policy</Link>
-                                </Typography>
-                                <Box alignSelf="center">
-                                    <Button
-                                        type="submit"
-                                        size="large"
-                                        color="primary"
-                                        variant="contained"
-                                        disabled={loading}
-                                    >
-                                        {loading ? <><CircularProgress size={24} />&nbsp;&nbsp;REGISTER NOW</> : 'Register Now'}
-                                    </Button>
-                                </Box>
-                            </Stack>
-                        </form>
+                        <Typography variant="body1" component="p">Complete the survey above to unlock your exclusive policy pack.</Typography>
+                        <Button
+                            type="submit"
+                            size="medium"
+                            variant="contained"
+                            color="primary"
+                            disabled={!surveyCompleted}
+                            startIcon={<Download />}
+                            onClick={downloadTemplate}
+                            id="download-button"
+                        >
+                            Download Policy Pack
+                        </Button>
                     </Stack>
-                </Box>*/}
+                </Box>
             </Stack>
-        </Box>
+        </Container>
     );
 };
 
