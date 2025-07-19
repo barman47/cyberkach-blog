@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Webinar from './Webinar';
 
 export const metadata: Metadata = {
-    title: 'The Cyberkach AI Security Webinar Series - Register | Cyberkach.com'
+    title: 'Thank you for Attending the Cyberkach AI Webinar Series - Policy Pack | Cyberkach.com'
 }
 
 const WebinarPage: React.FC<{}> = () => {
