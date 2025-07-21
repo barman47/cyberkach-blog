@@ -211,8 +211,8 @@ const Webinar: React.FC<{}> = () => {
 
     const downloadTemplate = () => {
         const link = document.createElement('a');
-        link.href= '/templatesforcyberkachwebinarpage.zip';
-        link.download = 'templatesforcyberkachwebinarpage.zip';
+        link.href= '/CyberkachTemplatesaipolicypack.zip';
+        link.download = 'CyberkachTemplatesaipolicypack.zip';
         link.click();
 
         toast.success('Download started');
