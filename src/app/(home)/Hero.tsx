@@ -1,7 +1,8 @@
 'use client';
 
+import Link from 'next/link';
 import { makeStyles } from 'tss-react/mui';
-import { Box, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 
 import { OFF_WHITE } from '../theme';
 
@@ -31,7 +32,7 @@ const useStyles = makeStyles()(theme => ({
         width: '100% !important',
         height: '100%',
         overflow: 'hidden',
-        zIndex: -1
+        // zIndex: -1
     },
 
     reponsiveVideo: {
@@ -60,7 +61,10 @@ const useStyles = makeStyles()(theme => ({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
+        gap: theme.spacing(2),
+        paddingLeft: theme.spacing(5),
         position: 'absolute',
+        zIndex: 1,
         top: 0,
         left: 0,
         width: '100%',
@@ -68,7 +72,6 @@ const useStyles = makeStyles()(theme => ({
     },
 
     text: {
-        marginLeft: theme.spacing(5),
         width: '50%',
         color: OFF_WHITE,
         fontSize: theme.spacing(3),
@@ -106,15 +109,25 @@ const Hero: React.FC<{}> = () => {
                     <Typography variant="body1" className={classes.text}>
                         Embrace cybersecurity excellence with Cyberkach, where our focus is on empowering through education. Dive into our blog, tune into &#39;The Cyberkach Podcast&#39; for insightful discussions, and enroll in specialized security training to ensure you and your organization stay resilient in the face of evolving threats.
                     </Typography>
+                    <Button
+                        size="medium"
+                        variant="contained"
+                        color="primary"
+                        LinkComponent={Link}
+                        href="/newsletter"
+                        sx={{ alignSelf: 'flex-start' }}
+                    >
+                        Join our Newsletter
+                    </Button>
                 </Box>
-                    <video autoPlay loop muted playsInline className={classes.reponsiveVideo}>
-                        <source src="/assets/vid/video1.mp4" type="video/mp4"></source>
-                        <source src="/assets/vid/video1.webm" type="video/webm"></source>
-                    </video>
-                    <video poster="/assets/img/video1.PNG" playsInline className={classes.mobileVideo}>
-                        <source src="/assets/vid/video1.mp4" type="video/mp4"></source>
-                        <source src="/assets/vid/video1.webm" type="video/webm"></source>
-                    </video>
+                <video autoPlay loop muted playsInline className={classes.reponsiveVideo}>
+                    <source src="/assets/vid/video1.mp4" type="video/mp4"></source>
+                    <source src="/assets/vid/video1.webm" type="video/webm"></source>
+                </video>
+                <video poster="/assets/img/video1.PNG" playsInline className={classes.mobileVideo}>
+                    <source src="/assets/vid/video1.mp4" type="video/mp4"></source>
+                    <source src="/assets/vid/video1.webm" type="video/webm"></source>
+                </video>
             </div>
         </div>
     );

@@ -20,6 +20,7 @@ import {
 import { Email, MapMarker, Phone, Linkedin, Twitter } from 'mdi-material-ui';
 
 import { LIGHT_GREY, OFF_WHITE } from '@/app/theme';
+import NewsletterForm from './NewsLetterForm';
 
 const useStyles = makeStyles()(theme => ({
     root: {
@@ -125,6 +126,28 @@ const useStyles = makeStyles()(theme => ({
         marginTop: theme.spacing(4)
     },
 
+    newsletter: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+
+        [theme.breakpoints.down('sm')]: {
+            padding: `${theme.spacing(2)} !important`
+        }
+    },
+
+    newsletterTitle: {
+        color: LIGHT_GREY,
+        fontWeight: 500,
+        
+        [theme.breakpoints.down('sm')]: {
+            fontSize: theme.spacing(3),
+            marginTop: theme.spacing(2),
+            marginBottom: theme.spacing(2),
+            textAlign: 'center'
+        }
+    },
+
     copyright: {
         padding: theme.spacing(2)
     },
@@ -210,6 +233,16 @@ const Footer = () => {
                 <Typography variant="body1">| |</Typography>
                 <Link href="privacyPolicy" className={classes.link} component={NextLink} variant="body1" target="_blank" rel="noopener noreferrer">Privacy Policy</Link>
             </Stack>
+            <br />
+            <Box component="section" className={classes.newsletter}>
+                <Stack direction="column" gap={3}>
+                    <Typography variant="h6" className={classes.newsletterTitle}>Subscribe to the Cyberkach Newsletter</Typography>
+                    <NewsletterForm
+                        placeholderColor={LIGHT_GREY}
+                        helperTextColor={LIGHT_GREY}
+                    />
+                </Stack>
+            </Box>
             <br />
             <Typography align="center" variant="h6">Connect With Us</Typography>
             <Stack direction="row" spacing={2} justifyContent="center">

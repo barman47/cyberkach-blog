@@ -8,7 +8,7 @@ import { makeStyles } from 'tss-react/mui';
 
 import { Post } from './Blog';
 import { Post as PostData } from '@/interfaces';
-import { Pagination, getMorePosts, selectPagination, selectPosts } from '@/redux/features/postsSlice';
+import { Pagination, getMorePosts, selectIsSearchResult, selectPagination, selectPosts } from '@/redux/features/postsSlice';
 import { AppDispatch } from '@/redux/store';
 
 const useStyles = makeStyles()(theme => ({
@@ -27,9 +27,10 @@ const Posts = () => {
     const { classes } = useStyles();
     const dispatch: AppDispatch = useDispatch();
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const router = useRouter();
 
+    const isSearchResult = useSelector(selectIsSearchResult);
     const pagination: Pagination = useSelector(selectPagination);
     const posts = useSelector(selectPosts);
 
@@ -37,7 +38,6 @@ const Posts = () => {
 
     React.useEffect(() => {
         const getMore = () => {
-            console.log('getting more posts');
             if (pagination.next) {
                 dispatch(getMorePosts({
                     page: pagination.next.page,
@@ -74,10 +74,14 @@ const Posts = () => {
         router.push(`blog/${post.slug}`);
     };
 
+    if (posts.length === 0) {
+        return null;
+    }
+
     return (
         <Box component="section" className={classes.root}>
-            {matches ?
-                posts && posts.map((post: PostData) => {
+            {isMobile ?
+                posts.map((post: PostData) => {
                     return (
                         <Post
                             key={post._id}
@@ -87,26 +91,44 @@ const Posts = () => {
                     );
                 })
                 :
-                posts && posts.map((post: PostData, index: number) => {
-                    if (index > 0) {
-                        return (
-                            <Post
-                                key={post._id}
-                                onClick={() => setPost(post)}
-                                post={post}
-                                // title={post.title}
-                                // slug={post.slug}
-                                // body={post.body}
-                                // avatar={post.author.avatar}
-                                // image={post.imageUrl}
-                                // url={`${BLOG}/${post.slug}`}
-                                // likes={post.likes}
-                                // id={post._id}
-                            />
-                        );
+                <>
+                    {isSearchResult ?
+                        <>
+                            {posts.map((post: PostData) => {
+                                return (
+                                    <Post
+                                        key={post._id}
+                                        onClick={() => setPost(post)}
+                                        post={post}
+                                    />
+                                );
+                            })}
+                        </>
+                        :
+                        <>
+                            {posts.map((post: PostData, index: number) => {
+                                if (index > 0) {
+                                    return (
+                                        <Post
+                                            key={post._id}
+                                            onClick={() => setPost(post)}
+                                            post={post}
+                                            // title={post.title}
+                                            // slug={post.slug}
+                                            // body={post.body}
+                                            // avatar={post.author.avatar}
+                                            // image={post.imageUrl}
+                                            // url={`${BLOG}/${post.slug}`}
+                                            // likes={post.likes}
+                                            // id={post._id}
+                                        />
+                                    );
+                                }
+                                return null;
+                            })}
+                        </>
                     }
-                    return null;
-                })
+                </>
             }
             <div ref={observerTarget}></div>
         </Box>  

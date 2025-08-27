@@ -6,8 +6,8 @@ import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
     AppBar,
+    Box,
     Button,
-    Grid,
     IconButton,
     Link,
     Slide,
@@ -20,8 +20,7 @@ import { makeStyles } from 'tss-react/mui';
 import { WHITE } from '@/app/theme';
 
 import MobileNav from './MobileNav';
-
-
+import SearchBox from './SearchBox';
 interface HideOnScrollProps {
     children: React.ReactElement;
 };
@@ -43,6 +42,8 @@ const useStyles = makeStyles()(theme => ({
     },
 
     nav: {
+        width: '100%',
+
         [theme.breakpoints.down('md')]: { 
             display: 'none'
         }
@@ -89,6 +90,7 @@ const useStyles = makeStyles()(theme => ({
         display: 'none',
         flexDirection: 'row',
         justifyContent: 'space-between',
+        gap: '1rem',
         
         [theme.breakpoints.down('md')]: {
             display: 'flex',
@@ -98,7 +100,7 @@ const useStyles = makeStyles()(theme => ({
 }));
 
 const Header = () => {
-    const {classes} = useStyles();
+    const { classes } = useStyles();
     const pathname = usePathname();
     
     const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -116,41 +118,39 @@ const Header = () => {
         setDrawerOpen(!drawerOpen);
     };
 
-
     return (
         <HideOnScroll>
             <AppBar className={classes.root} elevation={0}>
                 <Toolbar>
-                    <Grid container direction="row" alignItems="center" spacing={10} className={classes.nav}>
-                        <Grid item xs={2}>
-                            <Link href="/" component={NextLink}>
-                                <Image 
-                                    width={150}
-                                    height={10}
-                                    src={isBlog ? "/assets/img/icon-small.png" : "/assets/img/logo.png"} 
-                                    alt="Cyberkach Logo" 
-                                    className={isBlog ? classes.smallLogo : classes.logo} 
-                                    priority
-                                />
-                            </Link>
-                        </Grid>
-                        <Grid item xs={8}>
-                            <Stack direction="row" justifyContent="center" spacing={10}>
-                                <Stack>
-                                    <Link underline="hover" href="/" className={classes.link} component={NextLink} variant="body1">Home</Link>
-                                </Stack>
-                                <Stack>
-                                    <Link underline="hover" href="/blog" className={classes.link} component={NextLink} variant="body1">Blog</Link>
-                                </Stack>
-                                <Stack>
-                                    <Link underline="hover" href="/podcasts" className={classes.link} component={NextLink} variant="body1">Podcasts</Link>
-                                </Stack>
+                    <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={10} className={classes.nav}>
+                        <Link href="/" component={NextLink}>
+                            <Image 
+                                width={150}
+                                height={10}
+                                src={isBlog ? "/assets/img/icon-small.png" : "/assets/img/logo.png"} 
+                                alt="Cyberkach Logo" 
+                                className={isBlog ? classes.smallLogo : classes.logo} 
+                                priority
+                            />
+                        </Link>
+                        {pathname === '/blog' && 
+                            <Box component="div" sx={{ width: '25%' }}>
+                                <SearchBox placeholder="Search . . ." />
+                            </Box>
+                        }
+                        <Stack direction="row" justifyContent="center" spacing={10}>
+                            <Stack>
+                                <Link underline="hover" href="/" className={classes.link} component={NextLink} variant="body1">Home</Link>
                             </Stack>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Button variant="outlined" component={NextLink} color="primary" href="/contactUs" size="medium">Contact Us</Button>
-                        </Grid>
-                    </Grid>
+                            <Stack>
+                                <Link underline="hover" href="/blog" className={classes.link} component={NextLink} variant="body1">Blog</Link>
+                            </Stack>
+                            <Stack>
+                                <Link underline="hover" href="/podcasts" className={classes.link} component={NextLink} variant="body1">Podcasts</Link>
+                            </Stack>
+                        </Stack>
+                        <Button variant="outlined" component={NextLink} color="primary" href="/contactUs" size="medium">Contact Us</Button>
+                    </Stack>
                     <div className={classes.mobileNav}>
                         <Link href="/" component={NextLink}>
                             <Image 
@@ -162,6 +162,7 @@ const Header = () => {
                                 priority
                             />
                         </Link>
+                        <SearchBox placeholder="Search . . ." />
                         <IconButton edge="start" className={classes.menuButton} color="primary" aria-label="menu" onClick={toggleDrawer} >
                             <Menu />
                         </IconButton>

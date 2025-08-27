@@ -7,9 +7,7 @@ export const metadata: Metadata = {
 }
 
 async function getPosts (page: number, limit: number) {
-	const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/posts/?page=${page}&limit=${limit}`, { next: {
-		revalidate: 60
-	} });
+	const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/posts/?page=${page}&limit=${limit}`, { cache: 'no-store' });
    
 	if (!res.ok) {
 	  // This will activate the closest `error.js` Error Boundary

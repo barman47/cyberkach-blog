@@ -4,7 +4,7 @@ import { isEmpty } from '@/utils/isEmpty';
 import { ErrorObject } from '@/utils/constants';
 
 export type AddContactData = {
-    name: string;
+    // name: string;
     email: string;
 }
 
@@ -12,7 +12,7 @@ const validateAddContact = (data: AddContactData): ErrorObject<AddContactData> =
     const errors = {} as AddContactData;
 
     data.email = !isEmpty(data.email) ?  data.email : '';
-    data.name = !isEmpty(data.name) ?  data.name : '';
+    // data.name = !isEmpty(data.name) ?  data.name : '';
     
     if (!Validator.isEmail(data.email)) {
         errors.email = 'Invalid email Address!';
@@ -21,9 +21,9 @@ const validateAddContact = (data: AddContactData): ErrorObject<AddContactData> =
         errors.email = 'Your email address is required!';
     }
 
-    if (Validator.isEmpty(data.name)) {
-        errors.name = 'Your name is required!';
-    }
+    // if (Validator.isEmpty(data.name)) {
+    //     errors.name = 'Your name is required!';
+    // }
     
    
     return {

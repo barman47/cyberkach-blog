@@ -26,7 +26,7 @@ import Posts from './Posts';
 import { Post as PostData } from '@/interfaces';
 import { AppDispatch } from '@/redux/store';
 import { LIGHT_GREY, OFF_WHITE } from '../theme';
-import { Pagination, selectIsPostLoading, selectPagination, setPagination, setPosts } from '@/redux/features/postsSlice';
+import { Pagination, selectIsPostLoading, selectIsSearchResult, selectPagination, selectPosts, setPagination, setPosts } from '@/redux/features/postsSlice';
 
 const useStyles = makeStyles()(theme => ({
     root: {
@@ -277,6 +277,8 @@ const Blog: React.FC<Props> = ({ pagination, posts }) => {
     const { classes } = useStyles();
     const dispatch: AppDispatch = useDispatch();
     
+    const isSearchResult = useSelector(selectIsSearchResult);
+    const blogPosts = useSelector(selectPosts);
     
     const loading = useSelector(selectIsPostLoading);
     const postsPagination: Pagination = useSelector(selectPagination);
@@ -287,6 +289,12 @@ const Blog: React.FC<Props> = ({ pagination, posts }) => {
       // eslint-disable-next-line
     }, []);
 
+    React.useEffect(() => {
+        if (!isSearchResult && blogPosts.length === 0) {
+
+        }
+    }, [blogPosts, isSearchResult]);
+
     return (
         <Box component="main" className={classes.root}>
             <Typography variant="h4" align="center">
@@ -295,7 +303,7 @@ const Blog: React.FC<Props> = ({ pagination, posts }) => {
             {loading ? <h4>One Moment . . .</h4>
                 :
                 <>
-                    {posts.length &&
+                    {(posts.length > 0 && !isSearchResult) &&
                         <Link className={classes.featuredPost} href={`/blog/${posts[0].slug}`}>
                             <Image 
                                 src={posts[0].imageUrl} 
@@ -315,39 +323,43 @@ const Blog: React.FC<Props> = ({ pagination, posts }) => {
             }
             <Box component="div" className={classes.container}>
                 <Posts />
-                <Box component="aside" className={classes.aside}>
-                    {posts.map((post, index) => {
-                        if (index <= 4) {
-                            return (
-                                <Link 
-                                    key={post._id} 
-                                    href={`/blog/${post.slug}`} 
-                                    className={classes.sidePost} 
-                                >
-                                    <Stack direction="row" spacing={2}>
-                                        <Image 
-                                            src={post.imageUrl} 
-                                            alt={post.title} 
-                                            className={classes.sidePostImage} 
-                                            width={200}
-                                            height={100}
-                                        />
-                                        <Box component="div">
-                                            <Typography variant="body1" component="p" className={classes.sidePostTitle}>{post.title}</Typography> 
-                                            <Typography variant="subtitle2" component="small" className={classes.sidePostTimestamp}>{moment(post.createdAt).format('MMM Do, YYYY')}</Typography>&nbsp;
-                                        </Box>
-                                    </Stack>
-                                </Link>
-                            );
-                        }
-                        return null;
-                    })}
+                {!isSearchResult && 
+                    <Box component="aside" className={classes.aside}>
+                        {posts.map((post, index) => {
+                            if (index <= 4) {
+                                return (
+                                    <Link 
+                                        key={post._id} 
+                                        href={`/blog/${post.slug}`} 
+                                        className={classes.sidePost} 
+                                    >
+                                        <Stack direction="row" spacing={2}>
+                                            <Image 
+                                                src={post.imageUrl} 
+                                                alt={post.title} 
+                                                className={classes.sidePostImage} 
+                                                width={200}
+                                                height={100}
+                                            />
+                                            <Box component="div">
+                                                <Typography variant="body1" component="p" className={classes.sidePostTitle}>{post.title}</Typography> 
+                                                <Typography variant="subtitle2" component="small" className={classes.sidePostTimestamp}>{moment(post.createdAt).format('MMM Do, YYYY')}</Typography>&nbsp;
+                                            </Box>
+                                        </Stack>
+                                    </Link>
+                                );
+                            }
+                            return null;
+                        })}
+                    </Box>
+                }
+            </Box>
+            {!isSearchResult && 
+                <Box component="div" sx={{ my: 5 }}>
+                    {loading && <Typography variant="h6" align="center">Fetching Posts . . .</Typography>}
+                    {!postsPagination.next && <Typography variant="h6" align="center">No More Posts</Typography>}
                 </Box>
-            </Box>
-            <Box component="div" sx={{ my: 5 }}>
-                {loading && <Typography variant="h6" align="center">Fetching Posts . . .</Typography>}
-                {!postsPagination.next && <Typography variant="h6" align="center">No More Posts</Typography>}
-            </Box>
+            }
         </Box>
     );
 }
