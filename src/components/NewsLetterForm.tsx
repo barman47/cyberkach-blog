@@ -139,7 +139,7 @@ const NewsletterForm: React.FC<Props> = ({ buttonText, callBack, placeholderColo
                 {showFooterText && 
                     <>
                         <Typography variant="subtitle2" component="span" className={classes.footerText}>By submitting your email, you agree to receive communications related to Cyberkach report and insights<br /> We do not sell your data to third parties.</Typography>
-                        <Link component={NextLink} href="privacyPolicy" underline="hover" className={classes.link}>Read our full Privacy Policy</Link>   
+                        <Link component={NextLink} href="/privacyPolicy" underline="hover" className={classes.link}>Read our full Privacy Policy</Link>   
                     </>
                 }
             </Stack>
