@@ -271,7 +271,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
                             title={title}
                             summary="Page Summary Here"
                             source="Cyberkach.com"
-                            placeholder=""
                         >
                             <Stack direction="row" alignItems="center">
                                 <ListItemIcon>
@@ -288,7 +287,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
                             via="Via content here"
                             hashtags={['hashtag1', 'hashtag2']}
                             related={[]}
-                            placeholder=""
                         >
                             <Stack direction="row" alignItems="center">
                                 <ListItemIcon>

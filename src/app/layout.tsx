@@ -18,8 +18,7 @@ export const metadata: Metadata = {
 }
 
 interface Props {
-	children: React.ReactElement;
-	params: { id: string };
+	children: React.ReactNode;
 }
 
 export default function RootLayout({

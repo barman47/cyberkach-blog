@@ -6,7 +6,7 @@ import { Post as PostData } from '@/interfaces';
 import { removeHtmlTags } from '@/utils/removeHtmlTags';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const { slug } = params;
+    const { slug } = await params;
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/posts/slug/${slug}`);
 
@@ -71,13 +71,13 @@ async function getPosts (page: number, limit: number) {
 }
 
 interface Props {
-    params: {
+    params: Promise<{
         slug: string;
-    }
+    }>
 }
 
 const SingleBlogPage: React.FC<Props> = async ({ params }) => {
-    const  { slug } = params;
+    const  { slug } = await params;
     const res = await getPostBySlug(slug);
     const post = res.data;
     const postsResponse = await getPosts(1, 5);

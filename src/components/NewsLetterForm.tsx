@@ -1,23 +1,44 @@
 'use client';
 
 import * as React from 'react';
+import NextLink from 'next/link';
 import {
     Button,
     CircularProgress,
+    Link,
     Stack,
-    TextField
+    TextField,
+    Typography
 } from '@mui/material';
+import { makeStyles } from 'tss-react/mui';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 
 import validateAddContact, { AddContactData } from '@/utils/validation/contact/add';
 
+const useStyles = makeStyles()((theme) => ({
+    footerText: {
+        fontStyle: 'italic',
+        textAlign: 'center'
+    },
+    
+    link: {
+        color: theme.palette.info.main,
+        textAlign: 'center'
+    }
+}));
+
 interface Props {
     placeholderColor?: string;
     helperTextColor?: string;
+    buttonText?: string;
+    showFooterText?: boolean;
+    callBack?: () => void;
 }
 
-const NewsletterForm: React.FC<Props> = ({ placeholderColor, helperTextColor }) => {
+const NewsletterForm: React.FC<Props> = ({ buttonText, callBack, placeholderColor, helperTextColor, showFooterText }) => {
+    const { classes } = useStyles();
+
     const [email, setEmail] = React.useState('');
     // const [name, setName] = React.useState('');
     const [loading, setLoading] = React.useState(false);
@@ -40,6 +61,10 @@ const NewsletterForm: React.FC<Props> = ({ placeholderColor, helperTextColor }) 
             toast.success(res.data.msg);
             setEmail('');
             // setName('');
+            if (callBack) {
+                callBack();
+            }
+
         } catch (error: any) {
             setLoading(false);
             console.error(error);
@@ -109,8 +134,14 @@ const NewsletterForm: React.FC<Props> = ({ placeholderColor, helperTextColor }) 
                     disabled={loading}
                     disableElevation
                 >
-                    {loading ? <CircularProgress size={24} /> : 'Subscribe'}
+                    {loading ? <CircularProgress size={24} /> : buttonText ?? 'Subscribe'}
                 </Button>
+                {showFooterText && 
+                    <>
+                        <Typography variant="subtitle2" component="span" className={classes.footerText}>By submitting your email, you agree to receive communications related to Cyberkach report and insights<br /> We do not sell your data to third parties.</Typography>
+                        <Link component={NextLink} href="privacyPolicy" underline="hover" className={classes.link}>Read our full Privacy Policy</Link>   
+                    </>
+                }
             </Stack>
             <Toaster />
         </>
