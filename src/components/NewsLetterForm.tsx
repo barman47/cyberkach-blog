@@ -7,8 +7,7 @@ import {
     CircularProgress,
     Link,
     Stack,
-    TextField,
-    Typography
+    TextField
 } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import axios from 'axios';
@@ -17,11 +16,6 @@ import toast, { Toaster } from 'react-hot-toast';
 import validateAddContact, { AddContactData } from '@/utils/validation/contact/add';
 
 const useStyles = makeStyles()((theme) => ({
-    footerText: {
-        fontStyle: 'italic',
-        textAlign: 'center'
-    },
-    
     link: {
         color: theme.palette.info.main,
         textAlign: 'center'
@@ -137,10 +131,7 @@ const NewsletterForm: React.FC<Props> = ({ buttonText, callBack, placeholderColo
                     {loading ? <CircularProgress size={24} /> : buttonText ?? 'Subscribe'}
                 </Button>
                 {showFooterText && 
-                    <>
-                        <Typography variant="subtitle2" component="span" className={classes.footerText}>By submitting your email, you agree to receive communications related to Cyberkach report and insights<br /> We do not sell your data to third parties.</Typography>
-                        <Link component={NextLink} href="/privacyPolicy" underline="hover" className={classes.link}>Read our full Privacy Policy</Link>   
-                    </>
+                    <Link component={NextLink} href="/privacyPolicy" underline="hover" className={classes.link}>Read our full Privacy Policy</Link>   
                 }
             </Stack>
             <Toaster />
