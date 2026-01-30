@@ -2,12 +2,13 @@
 
 import * as React from 'react';
 import { makeStyles } from 'tss-react/mui';
-import { Link, Paper, Stack, Typography } from '@mui/material';
+import { Box, Paper, Stack, Typography } from '@mui/material';
 import toast from 'react-hot-toast';
+import NewsletterForm from '@/components/NewsLetterForm';
 
 const useStyles = makeStyles()(theme => ({
     root: {
-        width: '35dvw',
+        width: '40dvw',
         margin: '10rem auto 5rem auto',
         padding: theme.spacing(5),
 
@@ -45,19 +46,29 @@ const useStyles = makeStyles()(theme => ({
 
     text1: {
         color: '#374151',
-        fontSize: '1.125rem'
+        fontSize: '1.125rem',
+        textAlign: 'center'
     },
     
     text2: {
         color: theme.palette.secondary.main,
         fontSize: '1.125rem',
-        fontWeight: 600
+        fontWeight: 600,
+        textAlign: 'center'
     },
 
-    link: {
+    downloadText: {
         color: theme.palette.primary.main,
         fontSize: '1.125rem',
-        fontWeight: 600
+        fontWeight: 600,
+        textAlign: 'center'
+    },
+
+    footerText: {
+        color: '#374151',
+        fontSize: '1rem',
+        fontWeight: 400,
+        textAlign: 'center'        
     }
 }));
 
@@ -82,21 +93,21 @@ const CyberThreatOutlook: React.FC<{}> = () => {
                 </Stack>
                 <Stack direction="column" gap={2}>
                     <Typography variant="body1" className={classes.text1}>
-                        <strong>The 2026 Cyber Threat Outlook</strong> examines how the most significant cyber incidents of 2025 are reshaping the global threat landscape, analysing major ransomware attacks, large-scale data breaches, supply-chain compromises, and early AI-enabled cyber operations. It explores the financial, operational, regulatory, and geopolitical consequences of modern cyber attacks, and outlines what organisations should expect as cyber risk intensifies in 2026.
+                        <strong>The 2026 Cyber Threat Outlook</strong>  examines how the most significant cyber incidents of 2025 are reshaping the global threat landscape. It explores the financial, operational, regulatory, and geopolitical consequences of modern cyber attacks, and outlines what organisations should expect as cyber risk escalates in 2026.
                     </Typography>
-                    <Typography variant="body1" className={classes.text2}>Download the Full Report</Typography>
-                    <Typography variant="body1" className={classes.text1}>The 2026 Cyber Threat Outlook provides detailed incident analysis, emerging threat predictions, and strategic insights to help organisations anticipate risk and strengthen cyber resilience.</Typography>
-                    <Link
-                        href="#!"
-                        // href="/Cyberkach_2026_Cyber_Threat_Outlook.pdf"
-                        underline="hover"
-                        onClick={downloadTemplate} className={classes.link}
-                    >
-                        👉 Download the report to explore the data, trends, and lessons shaping cybersecurity in 2026.
-                    </Link>
-                    <br /><br />
-                    <Typography variant="h6" className={classes.subTitle}><em>An Analysis of 2025 Cyber Incidents and Emerging Risks for 2026</em></Typography>
-                    <Typography variant="body1" className={classes.text1}><em>Cyberkach provides research-driven cybersecurity insights to help organisations understand risk, improve resilience, and make informed security decisions.</em></Typography>
+                    <Typography variant="body1" className={classes.downloadText}>
+                        Download the report to explore the data and trends that will shape cybersecurity in 2026.
+                    </Typography>
+                    <Box component="div" sx={{ width: '100%' }}>
+                        <NewsletterForm
+                            buttonText="Download Report"
+                            showFooterText
+                            callBack={downloadTemplate}
+                        />
+                    </Box>
+                    <br />
+                    <Typography variant="h6" className={classes.footerText}><em>An Analysis of 2025 Cyber Incidents and Emerging Risks for 2026</em></Typography>
+                    <Typography variant="body1" className={classes.footerText}><em>Cyberkach provides research-driven cybersecurity insights to help organisations understand risk, improve resilience, and make informed security decisions.</em></Typography>
                 </Stack>
             </Stack>
         </>
