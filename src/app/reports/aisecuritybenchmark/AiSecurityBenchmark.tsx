@@ -87,6 +87,7 @@ const AiSecurityBenchmark: React.FC<{}> = () => {
                         buttonText="Download Report"
                         showFooterText
                         callBack={downloadTemplate}
+                        showSucessToast={false}
                     />
                 </Box>
             </Stack>

@@ -103,6 +103,7 @@ const CyberThreatOutlook: React.FC<{}> = () => {
                             buttonText="Download Report"
                             showFooterText
                             callBack={downloadTemplate}
+                            showSucessToast={false}
                         />
                     </Box>
                     <br />
