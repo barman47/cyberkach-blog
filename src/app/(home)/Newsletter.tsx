@@ -72,7 +72,7 @@ const Newsletter: React.FC<{}> = () => {
                     <Typography variant="subtitle2" className={classes.text}>
                         Join our newsletter to receive all our cyber content and news first-hand
                     </Typography>
-                    <NewsletterForm />
+                    <NewsletterForm showSucessToast />
                 </div>
             </section>
         </section>

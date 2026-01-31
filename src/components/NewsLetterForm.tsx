@@ -28,9 +28,10 @@ interface Props {
     buttonText?: string;
     showFooterText?: boolean;
     callBack?: () => void;
+    showSucessToast: boolean;
 }
 
-const NewsletterForm: React.FC<Props> = ({ buttonText, callBack, placeholderColor, helperTextColor, showFooterText }) => {
+const NewsletterForm: React.FC<Props> = ({ buttonText, callBack, placeholderColor, helperTextColor, showFooterText, showSucessToast }) => {
     const { classes } = useStyles();
 
     const [email, setEmail] = React.useState('');
@@ -52,7 +53,9 @@ const NewsletterForm: React.FC<Props> = ({ buttonText, callBack, placeholderColo
         try {
             const res = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/addContact`, { email });
             setLoading(false);
-            toast.success(res.data.msg);
+            if (showSucessToast) {
+                toast.success(res.data.msg);
+            }
             setEmail('');
             // setName('');
             if (callBack) {

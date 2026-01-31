@@ -54,7 +54,7 @@ const Newsletter: React.FC<{}> = () => {
                     Join the Cyberkach Newsletter to receive the latest cybersecurity news, industry insights, exclusive expert analysis, and actionable security tips delivered directly to your inbox.
                 </Typography>
                 <Box component="div" sx={{ width: '100%' }}>
-                    <NewsletterForm />
+                    <NewsletterForm showSucessToast />
                 </Box>
             </Stack>
         </>

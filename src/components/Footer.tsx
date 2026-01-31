@@ -239,6 +239,7 @@ const Footer = () => {
                     <NewsletterForm
                         placeholderColor={LIGHT_GREY}
                         helperTextColor={LIGHT_GREY}
+                        showSucessToast
                     />
                 </Stack>
             </Box>
